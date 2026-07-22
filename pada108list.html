@@ -1,0 +1,843 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>108パダ一覧表 — ナクシャトラ詳細付き</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Shippori+Mincho:wght@500;700&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#e9f0f8; --ink2:#f3f7fc; --brass:#3f6bb0; --brass2:#1f4e8c; --saffron:#7ba428;
+  --parch:#ffffff; --paperline:#2e4d7b; --ivory:#16233a; --mute:#4e6079;
+}
+*{box-sizing:border-box}
+body{margin:0; font-family:"Noto Sans JP",system-ui,sans-serif; color:var(--ivory);
+  background:radial-gradient(1200px 500px at 70% -10%, #b9d2ee33, transparent 60%),
+    radial-gradient(900px 400px at 0% 110%, #a9c8e833, transparent 60%), var(--ink);
+  min-height:100%; padding:0 0 60px}
+.hero{position:relative; overflow:hidden; padding:34px 28px 26px; border-bottom:1px solid #3f6bb033;
+  background:linear-gradient(180deg,#c3d8ef,#e9f0f8)}
+.stars{position:absolute; inset:0; width:100%; height:100%; opacity:.7}
+.heroInner{position:relative; max-width:1200px; margin:0 auto}
+.eyebrow{font-family:"Cormorant Garamond",serif; letter-spacing:.32em; text-transform:uppercase; color:var(--brass2); font-size:13px; margin-bottom:6px}
+h1{font-family:"Shippori Mincho",serif; font-weight:700; font-size:clamp(24px,4vw,36px); margin:0; letter-spacing:.04em; color:#152252; text-shadow:0 1px 0 #f4f8fd}
+.sub{color:var(--mute); margin:9px 0 0; font-size:13.5px; max-width:720px; line-height:1.7}
+.wrap{max-width:1200px; margin:26px auto 0; padding:0 22px}
+h2.sh{font-family:"Shippori Mincho",serif; font-size:17px; color:var(--brass2); letter-spacing:.06em; margin:30px 0 12px}
+h2.sh:first-of-type{margin-top:0}
+.panel{background:linear-gradient(180deg,#f5f8fc,#e7eef8); border:1px solid #3f6bb02e; border-radius:14px; padding:6px 14px 14px;
+  box-shadow:0 18px 40px -28px #000, inset 0 1px 0 #ffffff0a; overflow-x:auto}
+table{width:100%; border-collapse:collapse; font-size:12.5px; min-width:760px}
+th{position:sticky; top:0; text-align:left; font-weight:500; color:var(--brass2); font-size:11px; letter-spacing:.05em;
+  padding:11px 9px 9px; border-bottom:1px solid #3f6bb040; background:#f2f6fb; white-space:nowrap}
+td{padding:9px; border-bottom:1px solid #16233a12; vertical-align:top; line-height:1.65}
+tbody tr:hover td{background:#3f6bb00d}
+.num{font-family:"Cormorant Garamond",serif; font-weight:600; font-size:14.5px; color:var(--brass2); white-space:nowrap}
+.jname{font-family:"Shippori Mincho",serif; font-size:13.5px; color:#152252; white-space:nowrap}
+.sa{display:block; font-family:"Cormorant Garamond",serif; font-weight:500; font-size:11.5px; color:var(--mute)}
+.mono{font-family:"Cormorant Garamond",serif; font-size:13.5px; font-variant-numeric:tabular-nums; white-space:nowrap}
+.desc{min-width:240px}
+
+.vgrow td{background:#7ba42814}
+.vgrow:hover td{background:#7ba42822}
+.vg{display:inline-block; font-size:10px; color:#4c701a; border:1px solid #7ba42866; border-radius:5px; padding:0 6px; background:#7ba4281f; white-space:nowrap; margin-left:6px}
+tbody tr.gsep td{border-top:1px solid #3f6bb038}
+.mcell{background:#f2f6fb; vertical-align:middle !important; border-right:1px solid #16233a12}
+tbody tr:hover td.mcell,.vgrow td.mcell{background:#f2f6fb}
+.mwide{min-width:190px; max-width:230px; white-space:normal; vertical-align:top !important; padding-top:12px}
+.mwide .sa{margin-bottom:8px}
+.mInfo{font-family:"Noto Sans JP",sans-serif; font-size:11px; color:var(--ivory); line-height:1.7}
+.mL{display:inline-block; min-width:44px; color:var(--brass2); font-size:10px; letter-spacing:.04em}
+.mDesc{font-family:"Noto Sans JP",sans-serif; font-size:11px; color:var(--mute); line-height:1.7; margin-top:7px; border-top:1px dashed #3f6bb033; padding-top:7px}
+.foot{margin:30px 0 0; font-size:11px; line-height:1.75; color:var(--mute); border-top:1px dashed #3f6bb033; padding-top:14px}
+@media print{
+  body{background:#fff; padding:0}
+  .panel{box-shadow:none; border:1px solid #ccc; overflow:visible}
+  th{position:static}
+}
+</style>
+</head>
+<body>
+<header class="hero">
+<svg class="stars" viewBox="0 0 600 120" preserveAspectRatio="none">
+<circle cx="0.0" cy="0.0" r="1.4" fill="#ffffff" opacity="0.85"/><circle cx="53.7" cy="31.3" r="0.7" fill="#ffffff" opacity="0.5"/><circle cx="107.4" cy="62.6" r="0.7" fill="#ffffff" opacity="0.5"/><circle cx="161.1" cy="93.9" r="0.7" fill="#ffffff" opacity="0.85"/><circle cx="214.8" cy="5.2" r="0.7" fill="#ffffff" opacity="0.5"/><circle cx="268.5" cy="36.5" r="1.4" fill="#ffffff" opacity="0.5"/><circle cx="322.2" cy="67.8" r="0.7" fill="#ffffff" opacity="0.85"/><circle cx="375.9" cy="99.1" r="0.7" fill="#ffffff" opacity="0.5"/><circle cx="429.6" cy="10.4" r="0.7" fill="#ffffff" opacity="0.5"/><circle cx="483.3" cy="41.7" r="0.7" fill="#ffffff" opacity="0.85"/><circle cx="537.0" cy="73.0" r="1.4" fill="#ffffff" opacity="0.5"/><circle cx="590.7" cy="104.3" r="0.7" fill="#ffffff" opacity="0.5"/><circle cx="44.4" cy="15.6" r="0.7" fill="#ffffff" opacity="0.85"/><circle cx="98.1" cy="46.9" r="0.7" fill="#ffffff" opacity="0.5"/><circle cx="151.8" cy="78.2" r="0.7" fill="#ffffff" opacity="0.5"/><circle cx="205.5" cy="109.5" r="1.4" fill="#ffffff" opacity="0.85"/><circle cx="259.2" cy="20.8" r="0.7" fill="#ffffff" opacity="0.5"/><circle cx="312.9" cy="52.1" r="0.7" fill="#ffffff" opacity="0.5"/><circle cx="366.6" cy="83.4" r="0.7" fill="#ffffff" opacity="0.85"/><circle cx="420.3" cy="114.7" r="0.7" fill="#ffffff" opacity="0.5"/><circle cx="474.0" cy="26.0" r="1.4" fill="#ffffff" opacity="0.5"/><circle cx="527.7" cy="57.3" r="0.7" fill="#ffffff" opacity="0.85"/><circle cx="581.4" cy="88.6" r="0.7" fill="#ffffff" opacity="0.5"/><circle cx="35.1" cy="119.9" r="0.7" fill="#ffffff" opacity="0.5"/><circle cx="88.8" cy="31.2" r="0.7" fill="#ffffff" opacity="0.85"/><circle cx="142.5" cy="62.5" r="1.4" fill="#ffffff" opacity="0.5"/><circle cx="196.2" cy="93.8" r="0.7" fill="#ffffff" opacity="0.5"/><circle cx="249.9" cy="5.1" r="0.7" fill="#ffffff" opacity="0.85"/><circle cx="303.6" cy="36.4" r="0.7" fill="#ffffff" opacity="0.5"/><circle cx="357.3" cy="67.7" r="0.7" fill="#ffffff" opacity="0.5"/><circle cx="411.0" cy="99.0" r="1.4" fill="#ffffff" opacity="0.85"/><circle cx="464.7" cy="10.3" r="0.7" fill="#ffffff" opacity="0.5"/><circle cx="518.4" cy="41.6" r="0.7" fill="#ffffff" opacity="0.5"/><circle cx="572.1" cy="72.9" r="0.7" fill="#ffffff" opacity="0.85"/><circle cx="25.8" cy="104.2" r="0.7" fill="#ffffff" opacity="0.5"/><circle cx="79.5" cy="15.5" r="1.4" fill="#ffffff" opacity="0.5"/><circle cx="133.2" cy="46.8" r="0.7" fill="#ffffff" opacity="0.85"/><circle cx="186.9" cy="78.1" r="0.7" fill="#ffffff" opacity="0.5"/><circle cx="240.6" cy="109.4" r="0.7" fill="#ffffff" opacity="0.5"/><circle cx="294.3" cy="20.7" r="0.7" fill="#ffffff" opacity="0.85"/><circle cx="348.0" cy="52.0" r="1.4" fill="#ffffff" opacity="0.5"/><circle cx="401.7" cy="83.3" r="0.7" fill="#ffffff" opacity="0.5"/><circle cx="455.4" cy="114.6" r="0.7" fill="#ffffff" opacity="0.85"/><circle cx="509.1" cy="25.9" r="0.7" fill="#ffffff" opacity="0.5"/><circle cx="562.8" cy="57.2" r="0.7" fill="#ffffff" opacity="0.5"/><circle cx="16.5" cy="88.5" r="1.4" fill="#ffffff" opacity="0.85"/>
+</svg>
+<div class="heroInner">
+<div class="eyebrow">Jyotiṣa · ज्योतिष · Nakṣatra</div>
+<h1>108パダ一覧表</h1>
+<p class="sub">108のパダ（各3°20′）の一覧表です。左の結合セルに各ナクシャトラの範囲・支配星・神格・象徴・概要をまとめています。ラーシとナヴァームシャの星座が一致するヴァルゴッタマの12パダは緑色で示しています。</p>
+</div>
+</header>
+<main class="wrap">
+
+
+<div class="panel">
+<table>
+<thead><tr><th>#</th><th>ナクシャトラ</th><th>パダ</th><th>音節</th><th>人生目的</th><th>パダの象徴・概要</th><th>ナヴァームシャ</th><th>度数範囲</th></tr></thead>
+<tbody>
+<tr class="vgrow gsep">
+<td class="num mcell" rowspan="4">1</td><td class="jname mcell mwide" rowspan="4">アシュヴィニー<span class="sa">Aśvinī</span><div class="mInfo"><span class="mL">範囲</span>牡羊座0°〜13°20′</div><div class="mInfo"><span class="mL">支配星</span>ケートゥ</div><div class="mInfo"><span class="mL">神格</span>アシュヴィン双神</div><div class="mInfo"><span class="mL">象徴</span>馬の頭</div><div class="mDesc">スピード、治癒、開拓精神。行動が速い</div></td><td class="num">1</td>
+<td class="mono">チュ(Chu)</td>
+<td>ダルマ（義務・使命）</td>
+<td class="desc">開拓者の勢い。大胆で衝動的、先駆的な行動力。エネルギーが最も強いパダ <span class="vg">ヴァルゴッタマ</span></td>
+<td>牡羊座<span class="sa">火星</span></td>
+<td class="mono">牡羊座0°00′〜牡羊座3°20′</td>
+</tr><tr>
+<td class="num">2</td>
+<td class="mono">チェ(Che)</td>
+<td>アルタ（実利・富）</td>
+<td class="desc">実行力と実利。アイデアを着実に形にし、資質を財に結びつける</td>
+<td>牡牛座<span class="sa">金星</span></td>
+<td class="mono">牡羊座3°20′〜牡羊座6°40′</td>
+</tr><tr>
+<td class="num">3</td>
+<td class="mono">チョ(Cho)</td>
+<td>カーマ（欲望・喜び）</td>
+<td class="desc">機敏な知性。コミュニケーション能力と機転、素早い学習力</td>
+<td>双子座<span class="sa">水星</span></td>
+<td class="mono">牡羊座6°40′〜牡羊座10°00′</td>
+</tr><tr>
+<td class="num">4</td>
+<td class="mono">ラ(La)</td>
+<td>モークシャ（解脱）</td>
+<td class="desc">癒し手の資質。共感力が高く、治療・奉仕・救助の才能を持つ</td>
+<td>蟹座<span class="sa">月</span></td>
+<td class="mono">牡羊座10°00′〜牡羊座13°20′</td>
+</tr><tr class="gsep">
+<td class="num mcell" rowspan="4">2</td><td class="jname mcell mwide" rowspan="4">バラニー<span class="sa">Bharaṇī</span><div class="mInfo"><span class="mL">範囲</span>牡羊座13°20′〜26°40′</div><div class="mInfo"><span class="mL">支配星</span>金星</div><div class="mInfo"><span class="mL">神格</span>ヤマ（死神）</div><div class="mInfo"><span class="mL">象徴</span>女性器/産道</div><div class="mDesc">生と死、変容、強い意志と忍耐</div></td><td class="num">1</td>
+<td class="mono">リ(Li)</td>
+<td>ダルマ（義務・使命）</td>
+<td class="desc">創造的な意志力。堂々とした自己表現と誇り、リーダーシップ</td>
+<td>獅子座<span class="sa">太陽</span></td>
+<td class="mono">牡羊座13°20′〜牡羊座16°40′</td>
+</tr><tr>
+<td class="num">2</td>
+<td class="mono">ル(Lu)</td>
+<td>アルタ（実利・富）</td>
+<td class="desc">勤勉と自制。奉仕と労働を通じて変容を遂げる。細部への注意力</td>
+<td>乙女座<span class="sa">水星</span></td>
+<td class="mono">牡羊座16°40′〜牡羊座20°00′</td>
+</tr><tr>
+<td class="num">3</td>
+<td class="mono">レ(Le)</td>
+<td>カーマ（欲望・喜び）</td>
+<td class="desc">調和と芸術性。人間関係の中で成長し、美と享楽を愛する</td>
+<td>天秤座<span class="sa">金星</span></td>
+<td class="mono">牡羊座20°00′〜牡羊座23°20′</td>
+</tr><tr>
+<td class="num">4</td>
+<td class="mono">ロ(Lo)</td>
+<td>モークシャ（解脱）</td>
+<td class="desc">最も強烈な変容力。極端さと再生のエネルギー、深い情念</td>
+<td>蠍座<span class="sa">火星</span></td>
+<td class="mono">牡羊座23°20′〜牡羊座26°40′</td>
+</tr><tr class="gsep">
+<td class="num mcell" rowspan="4">3</td><td class="jname mcell mwide" rowspan="4">クリッティカー<span class="sa">Kṛttikā</span><div class="mInfo"><span class="mL">範囲</span>牡羊座26°40′〜牡牛座10°</div><div class="mInfo"><span class="mL">支配星</span>太陽</div><div class="mInfo"><span class="mL">神格</span>アグニ（火神）</div><div class="mInfo"><span class="mL">象徴</span>剃刀・炎</div><div class="mDesc">浄化、鋭い批判力、切り開く力</div></td><td class="num">1</td>
+<td class="mono">ア(A)</td>
+<td>ダルマ（義務・使命）</td>
+<td class="desc">理想への情熱。正義感と指導力、真理のために切り込む鋭さ</td>
+<td>射手座<span class="sa">木星</span></td>
+<td class="mono">牡羊座26°40′〜牡羊座30°00′</td>
+</tr><tr>
+<td class="num">2</td>
+<td class="mono">イ(I)</td>
+<td>アルタ（実利・富）</td>
+<td class="desc">実務的な鋭さ。目標達成への集中力と現実的な判断力</td>
+<td>山羊座<span class="sa">土星</span></td>
+<td class="mono">牡牛座0°00′〜牡牛座3°20′</td>
+</tr><tr>
+<td class="num">3</td>
+<td class="mono">ウ(U)</td>
+<td>カーマ（欲望・喜び）</td>
+<td class="desc">改革精神。社会的視野と独創性、集団のための批判精神</td>
+<td>水瓶座<span class="sa">土星</span></td>
+<td class="mono">牡牛座3°20′〜牡牛座6°40′</td>
+</tr><tr>
+<td class="num">4</td>
+<td class="mono">エ(E)</td>
+<td>モークシャ（解脱）</td>
+<td class="desc">直感的な浄化。繊細な感受性と精神的探求、内なる炎</td>
+<td>魚座<span class="sa">木星</span></td>
+<td class="mono">牡牛座6°40′〜牡牛座10°00′</td>
+</tr><tr class="gsep">
+<td class="num mcell" rowspan="4">4</td><td class="jname mcell mwide" rowspan="4">ローヒニー<span class="sa">Rohiṇī</span><div class="mInfo"><span class="mL">範囲</span>牡牛座10°〜23°20′</div><div class="mInfo"><span class="mL">支配星</span>月</div><div class="mInfo"><span class="mL">神格</span>ブラフマー</div><div class="mInfo"><span class="mL">象徴</span>牛車</div><div class="mDesc">豊穣、美、魅力、物質的繁栄。月の最愛の妻</div></td><td class="num">1</td>
+<td class="mono">オ(O)</td>
+<td>ダルマ（義務・使命）</td>
+<td class="desc">情熱的な創造。積極的に豊かさを追い、開拓する情熱を持つ</td>
+<td>牡羊座<span class="sa">火星</span></td>
+<td class="mono">牡牛座10°00′〜牡牛座13°20′</td>
+</tr><tr class="vgrow">
+<td class="num">2</td>
+<td class="mono">ヴァ(Va)</td>
+<td>アルタ（実利・富）</td>
+<td class="desc">最も安定した豊穣。芸術・美・物質的成功の頂点 <span class="vg">ヴァルゴッタマ</span></td>
+<td>牡牛座<span class="sa">金星</span></td>
+<td class="mono">牡牛座13°20′〜牡牛座16°40′</td>
+</tr><tr>
+<td class="num">3</td>
+<td class="mono">ヴィ(Vi)</td>
+<td>カーマ（欲望・喜び）</td>
+<td class="desc">芸術と商才。豊かな表現力と社交性、機知に富む魅力</td>
+<td>双子座<span class="sa">水星</span></td>
+<td class="mono">牡牛座16°40′〜牡牛座20°00′</td>
+</tr><tr>
+<td class="num">4</td>
+<td class="mono">ヴ(Vu)</td>
+<td>モークシャ（解脱）</td>
+<td class="desc">養育的な愛情。家庭・情緒・母性の豊かさ、深い情愛</td>
+<td>蟹座<span class="sa">月</span></td>
+<td class="mono">牡牛座20°00′〜牡牛座23°20′</td>
+</tr><tr class="gsep">
+<td class="num mcell" rowspan="4">5</td><td class="jname mcell mwide" rowspan="4">ムリガシラー<span class="sa">Mṛgaśira</span><div class="mInfo"><span class="mL">範囲</span>牡牛座23°20′〜双子座6°40′</div><div class="mInfo"><span class="mL">支配星</span>火星</div><div class="mInfo"><span class="mL">神格</span>ソーマ（月神）</div><div class="mInfo"><span class="mL">象徴</span>鹿の頭</div><div class="mDesc">探求心、好奇心、繊細さ、彷徨</div></td><td class="num">1</td>
+<td class="mono">ヴェ(Ve)</td>
+<td>ダルマ（義務・使命）</td>
+<td class="desc">創造的な探求。自信を持って理想を追い、注目を集める魅力</td>
+<td>獅子座<span class="sa">太陽</span></td>
+<td class="mono">牡牛座23°20′〜牡牛座26°40′</td>
+</tr><tr>
+<td class="num">2</td>
+<td class="mono">ヴォ(Vo)</td>
+<td>アルタ（実利・富）</td>
+<td class="desc">分析的な探求。知的識別力とユーモア、言葉の巧みさ</td>
+<td>乙女座<span class="sa">水星</span></td>
+<td class="mono">牡牛座26°40′〜牡牛座30°00′</td>
+</tr><tr>
+<td class="num">3</td>
+<td class="mono">カ(Ka)</td>
+<td>カーマ（欲望・喜び）</td>
+<td class="desc">社交的な探求。芸術性とパートナーシップを通じた発見</td>
+<td>天秤座<span class="sa">金星</span></td>
+<td class="mono">双子座0°00′〜双子座3°20′</td>
+</tr><tr>
+<td class="num">4</td>
+<td class="mono">キ(Ki)</td>
+<td>モークシャ（解脱）</td>
+<td class="desc">深層への探求。鋭い洞察力を持つが、疑い深く用心深い</td>
+<td>蠍座<span class="sa">火星</span></td>
+<td class="mono">双子座3°20′〜双子座6°40′</td>
+</tr><tr class="gsep">
+<td class="num mcell" rowspan="4">6</td><td class="jname mcell mwide" rowspan="4">アールドラー<span class="sa">Ārdrā</span><div class="mInfo"><span class="mL">範囲</span>双子座6°40′〜20°</div><div class="mInfo"><span class="mL">支配星</span>ラーフ</div><div class="mInfo"><span class="mL">神格</span>ルドラ（嵐神）</div><div class="mInfo"><span class="mL">象徴</span>涙の滴</div><div class="mDesc">嵐と再生、激しい感情、知的鋭さ</div></td><td class="num">1</td>
+<td class="mono">ク(Ku)</td>
+<td>ダルマ（義務・使命）</td>
+<td class="desc">哲学的な嵐。真理探求への情熱、苦悩を知恵に変える力</td>
+<td>射手座<span class="sa">木星</span></td>
+<td class="mono">双子座6°40′〜双子座10°00′</td>
+</tr><tr>
+<td class="num">2</td>
+<td class="mono">ガ(Gha)</td>
+<td>アルタ（実利・富）</td>
+<td class="desc">野心と試練。困難な経験を通じて着実に成長する忍耐</td>
+<td>山羊座<span class="sa">土星</span></td>
+<td class="mono">双子座10°00′〜双子座13°20′</td>
+</tr><tr>
+<td class="num">3</td>
+<td class="mono">ンガ(Nga)</td>
+<td>カーマ（欲望・喜び）</td>
+<td class="desc">科学的な知性。革新性と人道的関心、研究者の資質</td>
+<td>水瓶座<span class="sa">土星</span></td>
+<td class="mono">双子座13°20′〜双子座16°40′</td>
+</tr><tr>
+<td class="num">4</td>
+<td class="mono">チャ(Chha)</td>
+<td>モークシャ（解脱）</td>
+<td class="desc">感情の浄化。涙を経ての再生、深い共感と霊的感受性</td>
+<td>魚座<span class="sa">木星</span></td>
+<td class="mono">双子座16°40′〜双子座20°00′</td>
+</tr><tr class="gsep">
+<td class="num mcell" rowspan="4">7</td><td class="jname mcell mwide" rowspan="4">プナルヴァス<span class="sa">Punarvasu</span><div class="mInfo"><span class="mL">範囲</span>双子座20°〜蟹座3°20′</div><div class="mInfo"><span class="mL">支配星</span>木星</div><div class="mInfo"><span class="mL">神格</span>アディティ（母神）</div><div class="mInfo"><span class="mL">象徴</span>矢筒</div><div class="mDesc">回復、帰還、寛容、再出発の力</div></td><td class="num">1</td>
+<td class="mono">ケ(Ke)</td>
+<td>ダルマ（義務・使命）</td>
+<td class="desc">冒険的な再出発。行動によって回復し、新天地を開く力</td>
+<td>牡羊座<span class="sa">火星</span></td>
+<td class="mono">双子座20°00′〜双子座23°20′</td>
+</tr><tr>
+<td class="num">2</td>
+<td class="mono">コ(Ko)</td>
+<td>アルタ（実利・富）</td>
+<td class="desc">安定への回帰。物質面の再建と豊かさの回復</td>
+<td>牡牛座<span class="sa">金星</span></td>
+<td class="mono">双子座23°20′〜双子座26°40′</td>
+</tr><tr class="vgrow">
+<td class="num">3</td>
+<td class="mono">ハ(Ha)</td>
+<td>カーマ（欲望・喜び）</td>
+<td class="desc">知的な柔軟性。学びを通じた更新、多才さ <span class="vg">ヴァルゴッタマ</span></td>
+<td>双子座<span class="sa">水星</span></td>
+<td class="mono">双子座26°40′〜双子座30°00′</td>
+</tr><tr class="vgrow">
+<td class="num">4</td>
+<td class="mono">ヒ(Hi)</td>
+<td>モークシャ（解脱）</td>
+<td class="desc">母性的な帰還。家庭と精神的充足、心の安らぎへの回帰 <span class="vg">ヴァルゴッタマ</span></td>
+<td>蟹座<span class="sa">月</span></td>
+<td class="mono">蟹座0°00′〜蟹座3°20′</td>
+</tr><tr class="gsep">
+<td class="num mcell" rowspan="4">8</td><td class="jname mcell mwide" rowspan="4">プシャヤ<span class="sa">Puṣya</span><div class="mInfo"><span class="mL">範囲</span>蟹座3°20′〜16°40′</div><div class="mInfo"><span class="mL">支配星</span>土星</div><div class="mInfo"><span class="mL">神格</span>ブリハスパティ</div><div class="mInfo"><span class="mL">象徴</span>牛の乳房</div><div class="mDesc">養育、繁栄、精神性。最吉祥の星宿とされる</div></td><td class="num">1</td>
+<td class="mono">フ(Hu)</td>
+<td>ダルマ（義務・使命）</td>
+<td class="desc">誇り高き養育。指導者・保護者としての繁栄と名声</td>
+<td>獅子座<span class="sa">太陽</span></td>
+<td class="mono">蟹座3°20′〜蟹座6°40′</td>
+</tr><tr>
+<td class="num">2</td>
+<td class="mono">ヘ(He)</td>
+<td>アルタ（実利・富）</td>
+<td class="desc">実務的な奉仕。勤勉さと誠実さによる着実な成功</td>
+<td>乙女座<span class="sa">水星</span></td>
+<td class="mono">蟹座6°40′〜蟹座10°00′</td>
+</tr><tr>
+<td class="num">3</td>
+<td class="mono">ホ(Ho)</td>
+<td>カーマ（欲望・喜び）</td>
+<td class="desc">調和的な支援。協力関係と人望、社会的な信頼</td>
+<td>天秤座<span class="sa">金星</span></td>
+<td class="mono">蟹座10°00′〜蟹座13°20′</td>
+</tr><tr>
+<td class="num">4</td>
+<td class="mono">ダ(Da)</td>
+<td>モークシャ（解脱）</td>
+<td class="desc">深い献身。神秘的・宗教的傾向、精神性の探求</td>
+<td>蠍座<span class="sa">火星</span></td>
+<td class="mono">蟹座13°20′〜蟹座16°40′</td>
+</tr><tr class="gsep">
+<td class="num mcell" rowspan="4">9</td><td class="jname mcell mwide" rowspan="4">アーシュレーシャー<span class="sa">Āśleṣā</span><div class="mInfo"><span class="mL">範囲</span>蟹座16°40′〜30°</div><div class="mInfo"><span class="mL">支配星</span>水星</div><div class="mInfo"><span class="mL">神格</span>ナーガ（蛇神）</div><div class="mInfo"><span class="mL">象徴</span>とぐろを巻く蛇</div><div class="mDesc">洞察力、神秘性、絡みつく執着</div></td><td class="num">1</td>
+<td class="mono">ディ(Di)</td>
+<td>ダルマ（義務・使命）</td>
+<td class="desc">哲学する蛇。知恵と楽観が混在し、説得力のある知性</td>
+<td>射手座<span class="sa">木星</span></td>
+<td class="mono">蟹座16°40′〜蟹座20°00′</td>
+</tr><tr>
+<td class="num">2</td>
+<td class="mono">ドゥ(Du)</td>
+<td>アルタ（実利・富）</td>
+<td class="desc">戦略的な知性。野心的で抜け目なく、目的達成に長ける</td>
+<td>山羊座<span class="sa">土星</span></td>
+<td class="mono">蟹座20°00′〜蟹座23°20′</td>
+</tr><tr>
+<td class="num">3</td>
+<td class="mono">デ(De)</td>
+<td>カーマ（欲望・喜び）</td>
+<td class="desc">秘密の知識。独創的な発想を持つが、策略的な面も</td>
+<td>水瓶座<span class="sa">土星</span></td>
+<td class="mono">蟹座23°20′〜蟹座26°40′</td>
+</tr><tr>
+<td class="num">4</td>
+<td class="mono">ド(Do)</td>
+<td>モークシャ（解脱）</td>
+<td class="desc">幻想と直感。霊的な感受性が高いが、惑わされやすい繊細さ</td>
+<td>魚座<span class="sa">木星</span></td>
+<td class="mono">蟹座26°40′〜蟹座30°00′</td>
+</tr><tr class="gsep">
+<td class="num mcell" rowspan="4">10</td><td class="jname mcell mwide" rowspan="4">マガー<span class="sa">Maghā</span><div class="mInfo"><span class="mL">範囲</span>獅子座0°〜13°20′</div><div class="mInfo"><span class="mL">支配星</span>ケートゥ</div><div class="mInfo"><span class="mL">神格</span>ピトリ（祖霊）</div><div class="mInfo"><span class="mL">象徴</span>王座</div><div class="mDesc">権威、伝統、祖先とのつながり、誇り</div></td><td class="num">1</td>
+<td class="mono">マ(Ma)</td>
+<td>ダルマ（義務・使命）</td>
+<td class="desc">王者の意志。先祖の力を受け継ぐ指導力と権威</td>
+<td>牡羊座<span class="sa">火星</span></td>
+<td class="mono">獅子座0°00′〜獅子座3°20′</td>
+</tr><tr>
+<td class="num">2</td>
+<td class="mono">ミ(Mi)</td>
+<td>アルタ（実利・富）</td>
+<td class="desc">物質的な権威。地位・名誉・豊かさへの強い志向</td>
+<td>牡牛座<span class="sa">金星</span></td>
+<td class="mono">獅子座3°20′〜獅子座6°40′</td>
+</tr><tr>
+<td class="num">3</td>
+<td class="mono">ム(Mu)</td>
+<td>カーマ（欲望・喜び）</td>
+<td class="desc">知的な伝統。学識と弁舌、知識による権威の確立</td>
+<td>双子座<span class="sa">水星</span></td>
+<td class="mono">獅子座6°40′〜獅子座10°00′</td>
+</tr><tr>
+<td class="num">4</td>
+<td class="mono">メ(Me)</td>
+<td>モークシャ（解脱）</td>
+<td class="desc">家系への愛着。儀式・伝統・祖先崇拝への深い敬意</td>
+<td>蟹座<span class="sa">月</span></td>
+<td class="mono">獅子座10°00′〜獅子座13°20′</td>
+</tr><tr class="vgrow gsep">
+<td class="num mcell" rowspan="4">11</td><td class="jname mcell mwide" rowspan="4">プールヴァ・パールグニー<span class="sa">P.Phalgunī</span><div class="mInfo"><span class="mL">範囲</span>獅子座13°20′〜26°40′</div><div class="mInfo"><span class="mL">支配星</span>金星</div><div class="mInfo"><span class="mL">神格</span>バガ（幸運神）</div><div class="mInfo"><span class="mL">象徴</span>寝台の前脚</div><div class="mDesc">享楽、愛情、創造性、休息</div></td><td class="num">1</td>
+<td class="mono">モ(Mo)</td>
+<td>ダルマ（義務・使命）</td>
+<td class="desc">華やかな自己表現。誇りと創造の喜び、芸能の才 <span class="vg">ヴァルゴッタマ</span></td>
+<td>獅子座<span class="sa">太陽</span></td>
+<td class="mono">獅子座13°20′〜獅子座16°40′</td>
+</tr><tr>
+<td class="num">2</td>
+<td class="mono">タ(Ta)</td>
+<td>アルタ（実利・富）</td>
+<td class="desc">勤勉な喜び。奉仕と実務を通じて楽しみを見出す</td>
+<td>乙女座<span class="sa">水星</span></td>
+<td class="mono">獅子座16°40′〜獅子座20°00′</td>
+</tr><tr>
+<td class="num">3</td>
+<td class="mono">ティ(Ti)</td>
+<td>カーマ（欲望・喜び）</td>
+<td class="desc">洗練された社交性。芸術と愛の調和、優雅な魅力</td>
+<td>天秤座<span class="sa">金星</span></td>
+<td class="mono">獅子座20°00′〜獅子座23°20′</td>
+</tr><tr>
+<td class="num">4</td>
+<td class="mono">トゥ(Tu)</td>
+<td>モークシャ（解脱）</td>
+<td class="desc">情熱的な愛。感情の深さと執着、強い官能性</td>
+<td>蠍座<span class="sa">火星</span></td>
+<td class="mono">獅子座23°20′〜獅子座26°40′</td>
+</tr><tr class="gsep">
+<td class="num mcell" rowspan="4">12</td><td class="jname mcell mwide" rowspan="4">ウッタラ・パールグニー<span class="sa">U.Phalgunī</span><div class="mInfo"><span class="mL">範囲</span>獅子座26°40′〜乙女座10°</div><div class="mInfo"><span class="mL">支配星</span>太陽</div><div class="mInfo"><span class="mL">神格</span>アリヤマン</div><div class="mInfo"><span class="mL">象徴</span>寝台の後脚</div><div class="mDesc">契約、友情、援助、安定した結びつき</div></td><td class="num">1</td>
+<td class="mono">テ(Te)</td>
+<td>ダルマ（義務・使命）</td>
+<td class="desc">高潔な援助。倫理観と寛大さ、正義に基づく支援</td>
+<td>射手座<span class="sa">木星</span></td>
+<td class="mono">獅子座26°40′〜獅子座30°00′</td>
+</tr><tr>
+<td class="num">2</td>
+<td class="mono">ト(To)</td>
+<td>アルタ（実利・富）</td>
+<td class="desc">実務的な信頼。組織力と責任感、堅実な人望</td>
+<td>山羊座<span class="sa">土星</span></td>
+<td class="mono">乙女座0°00′〜乙女座3°20′</td>
+</tr><tr>
+<td class="num">3</td>
+<td class="mono">パ(Pa)</td>
+<td>カーマ（欲望・喜び）</td>
+<td class="desc">社会奉仕の精神。友情と人道的貢献、広い人脈</td>
+<td>水瓶座<span class="sa">土星</span></td>
+<td class="mono">乙女座3°20′〜乙女座6°40′</td>
+</tr><tr>
+<td class="num">4</td>
+<td class="mono">ピ(Pi)</td>
+<td>モークシャ（解脱）</td>
+<td class="desc">慈悲深い支援。直感と自己犠牲、無私の援助</td>
+<td>魚座<span class="sa">木星</span></td>
+<td class="mono">乙女座6°40′〜乙女座10°00′</td>
+</tr><tr class="gsep">
+<td class="num mcell" rowspan="4">13</td><td class="jname mcell mwide" rowspan="4">ハスタ<span class="sa">Hasta</span><div class="mInfo"><span class="mL">範囲</span>乙女座10°〜23°20′</div><div class="mInfo"><span class="mL">支配星</span>月</div><div class="mInfo"><span class="mL">神格</span>サヴィトリ（太陽神）</div><div class="mInfo"><span class="mL">象徴</span>手のひら</div><div class="mDesc">器用さ、技能、機知、実務能力</div></td><td class="num">1</td>
+<td class="mono">プ(Pu)</td>
+<td>ダルマ（義務・使命）</td>
+<td class="desc">素早い手技。行動的な器用さ、スポーツや技術の才</td>
+<td>牡羊座<span class="sa">火星</span></td>
+<td class="mono">乙女座10°00′〜乙女座13°20′</td>
+</tr><tr>
+<td class="num">2</td>
+<td class="mono">シャ(Sha)</td>
+<td>アルタ（実利・富）</td>
+<td class="desc">堅実な技能。工芸・手仕事と実利、粘り強い習熟</td>
+<td>牡牛座<span class="sa">金星</span></td>
+<td class="mono">乙女座13°20′〜乙女座16°40′</td>
+</tr><tr>
+<td class="num">3</td>
+<td class="mono">ナ(Na)</td>
+<td>カーマ（欲望・喜び）</td>
+<td class="desc">知的な巧みさ。商才と話術、交渉の上手さ</td>
+<td>双子座<span class="sa">水星</span></td>
+<td class="mono">乙女座16°40′〜乙女座20°00′</td>
+</tr><tr>
+<td class="num">4</td>
+<td class="mono">タ(Tha)</td>
+<td>モークシャ（解脱）</td>
+<td class="desc">癒しの手。世話好きで直感的、治療やケアの才能</td>
+<td>蟹座<span class="sa">月</span></td>
+<td class="mono">乙女座20°00′〜乙女座23°20′</td>
+</tr><tr class="gsep">
+<td class="num mcell" rowspan="4">14</td><td class="jname mcell mwide" rowspan="4">チトラー<span class="sa">Citrā</span><div class="mInfo"><span class="mL">範囲</span>乙女座23°20′〜天秤座6°40′</div><div class="mInfo"><span class="mL">支配星</span>火星</div><div class="mInfo"><span class="mL">神格</span>トヴァシュトリ（工匠神）</div><div class="mInfo"><span class="mL">象徴</span>輝く宝石</div><div class="mDesc">美的センス、建築・芸術、カリスマ</div></td><td class="num">1</td>
+<td class="mono">ペ(Pe)</td>
+<td>ダルマ（義務・使命）</td>
+<td class="desc">輝くカリスマ。自己演出の才と創造力、注目を集める力</td>
+<td>獅子座<span class="sa">太陽</span></td>
+<td class="mono">乙女座23°20′〜乙女座26°40′</td>
+</tr><tr class="vgrow">
+<td class="num">2</td>
+<td class="mono">ポ(Po)</td>
+<td>アルタ（実利・富）</td>
+<td class="desc">精密な職人技。細部への美意識と完璧主義 <span class="vg">ヴァルゴッタマ</span></td>
+<td>乙女座<span class="sa">水星</span></td>
+<td class="mono">乙女座26°40′〜乙女座30°00′</td>
+</tr><tr class="vgrow">
+<td class="num">3</td>
+<td class="mono">ラ(Ra)</td>
+<td>カーマ（欲望・喜び）</td>
+<td class="desc">洗練されたデザイン感覚。調和の美学、社交的魅力 <span class="vg">ヴァルゴッタマ</span></td>
+<td>天秤座<span class="sa">金星</span></td>
+<td class="mono">天秤座0°00′〜天秤座3°20′</td>
+</tr><tr>
+<td class="num">4</td>
+<td class="mono">リ(Ri)</td>
+<td>モークシャ（解脱）</td>
+<td class="desc">神秘的な魅力。深みのある創造性、隠された情熱</td>
+<td>蠍座<span class="sa">火星</span></td>
+<td class="mono">天秤座3°20′〜天秤座6°40′</td>
+</tr><tr class="gsep">
+<td class="num mcell" rowspan="4">15</td><td class="jname mcell mwide" rowspan="4">スヴァーティー<span class="sa">Svātī</span><div class="mInfo"><span class="mL">範囲</span>天秤座6°40′〜20°</div><div class="mInfo"><span class="mL">支配星</span>ラーフ</div><div class="mInfo"><span class="mL">神格</span>ヴァーユ（風神）</div><div class="mInfo"><span class="mL">象徴</span>風に揺れる若芽</div><div class="mDesc">独立心、柔軟性、自由、交渉力</div></td><td class="num">1</td>
+<td class="mono">ル(Ru)</td>
+<td>ダルマ（義務・使命）</td>
+<td class="desc">自由な探求。学びと旅への渇望、独立した精神</td>
+<td>射手座<span class="sa">木星</span></td>
+<td class="mono">天秤座6°40′〜天秤座10°00′</td>
+</tr><tr>
+<td class="num">2</td>
+<td class="mono">レ(Re)</td>
+<td>アルタ（実利・富）</td>
+<td class="desc">実利的な独立。ビジネスの才覚、交渉と取引の上手さ</td>
+<td>山羊座<span class="sa">土星</span></td>
+<td class="mono">天秤座10°00′〜天秤座13°20′</td>
+</tr><tr>
+<td class="num">3</td>
+<td class="mono">ロ(Ro)</td>
+<td>カーマ（欲望・喜び）</td>
+<td class="desc">革新的な自由。独創性と社会性、風のような柔軟さ</td>
+<td>水瓶座<span class="sa">土星</span></td>
+<td class="mono">天秤座13°20′〜天秤座16°40′</td>
+</tr><tr>
+<td class="num">4</td>
+<td class="mono">タ(Ta)</td>
+<td>モークシャ（解脱）</td>
+<td class="desc">柔軟な適応力。直感と霊性、流れに乗る知恵</td>
+<td>魚座<span class="sa">木星</span></td>
+<td class="mono">天秤座16°40′〜天秤座20°00′</td>
+</tr><tr class="gsep">
+<td class="num mcell" rowspan="4">16</td><td class="jname mcell mwide" rowspan="4">ヴィシャーカー<span class="sa">Viśākhā</span><div class="mInfo"><span class="mL">範囲</span>天秤座20°〜蠍座3°20′</div><div class="mInfo"><span class="mL">支配星</span>木星</div><div class="mInfo"><span class="mL">神格</span>インドラ・アグニ</div><div class="mInfo"><span class="mL">象徴</span>凱旋門</div><div class="mDesc">目標達成への執念、野心、集中力</div></td><td class="num">1</td>
+<td class="mono">ティ(Ti)</td>
+<td>ダルマ（義務・使命）</td>
+<td class="desc">猛烈な野心。競争心と突破力、目標への一直線の情熱</td>
+<td>牡羊座<span class="sa">火星</span></td>
+<td class="mono">天秤座20°00′〜天秤座23°20′</td>
+</tr><tr>
+<td class="num">2</td>
+<td class="mono">トゥ(Tu)</td>
+<td>アルタ（実利・富）</td>
+<td class="desc">粘り強い達成。着実な目標追求、揺るがぬ決意</td>
+<td>牡牛座<span class="sa">金星</span></td>
+<td class="mono">天秤座23°20′〜天秤座26°40′</td>
+</tr><tr>
+<td class="num">3</td>
+<td class="mono">テ(Te)</td>
+<td>カーマ（欲望・喜び）</td>
+<td class="desc">知略による勝利。多才さと説得力、戦略的思考</td>
+<td>双子座<span class="sa">水星</span></td>
+<td class="mono">天秤座26°40′〜天秤座30°00′</td>
+</tr><tr>
+<td class="num">4</td>
+<td class="mono">ト(To)</td>
+<td>モークシャ（解脱）</td>
+<td class="desc">感情的な決意。守るべきもののために闘う執念</td>
+<td>蟹座<span class="sa">月</span></td>
+<td class="mono">蠍座0°00′〜蠍座3°20′</td>
+</tr><tr class="gsep">
+<td class="num mcell" rowspan="4">17</td><td class="jname mcell mwide" rowspan="4">アヌラーダー<span class="sa">Anurādhā</span><div class="mInfo"><span class="mL">範囲</span>蠍座3°20′〜16°40′</div><div class="mInfo"><span class="mL">支配星</span>土星</div><div class="mInfo"><span class="mL">神格</span>ミトラ（友愛神）</div><div class="mInfo"><span class="mL">象徴</span>蓮の花</div><div class="mDesc">友情、協調、献身、逆境での成功</div></td><td class="num">1</td>
+<td class="mono">ナ(Na)</td>
+<td>ダルマ（義務・使命）</td>
+<td class="desc">誇り高い献身。指導的な立場での友情と忠誠</td>
+<td>獅子座<span class="sa">太陽</span></td>
+<td class="mono">蠍座3°20′〜蠍座6°40′</td>
+</tr><tr>
+<td class="num">2</td>
+<td class="mono">ニ(Ni)</td>
+<td>アルタ（実利・富）</td>
+<td class="desc">謙虚な協力。実務を通じた信頼関係の構築</td>
+<td>乙女座<span class="sa">水星</span></td>
+<td class="mono">蠍座6°40′〜蠍座10°00′</td>
+</tr><tr>
+<td class="num">3</td>
+<td class="mono">ヌ(Nu)</td>
+<td>カーマ（欲望・喜び）</td>
+<td class="desc">外交的な調和。人脈づくりと協調、バランス感覚</td>
+<td>天秤座<span class="sa">金星</span></td>
+<td class="mono">蠍座10°00′〜蠍座13°20′</td>
+</tr><tr class="vgrow">
+<td class="num">4</td>
+<td class="mono">ネ(Ne)</td>
+<td>モークシャ（解脱）</td>
+<td class="desc">深い絆。神秘性と情の濃さ、霊的な友愛 <span class="vg">ヴァルゴッタマ</span></td>
+<td>蠍座<span class="sa">火星</span></td>
+<td class="mono">蠍座13°20′〜蠍座16°40′</td>
+</tr><tr class="gsep">
+<td class="num mcell" rowspan="4">18</td><td class="jname mcell mwide" rowspan="4">ジェーシュター<span class="sa">Jyeṣṭhā</span><div class="mInfo"><span class="mL">範囲</span>蠍座16°40′〜30°</div><div class="mInfo"><span class="mL">支配星</span>水星</div><div class="mInfo"><span class="mL">神格</span>インドラ</div><div class="mInfo"><span class="mL">象徴</span>耳飾り・傘</div><div class="mDesc">年長者の権威、保護者、責任、プライド</div></td><td class="num">1</td>
+<td class="mono">ノ(No)</td>
+<td>ダルマ（義務・使命）</td>
+<td class="desc">寛大な長。正義感ある保護者、哲学的な権威</td>
+<td>射手座<span class="sa">木星</span></td>
+<td class="mono">蠍座16°40′〜蠍座20°00′</td>
+</tr><tr>
+<td class="num">2</td>
+<td class="mono">ヤ(Ya)</td>
+<td>アルタ（実利・富）</td>
+<td class="desc">責任ある権威。組織の統率力と実務的な支配力</td>
+<td>山羊座<span class="sa">土星</span></td>
+<td class="mono">蠍座20°00′〜蠍座23°20′</td>
+</tr><tr>
+<td class="num">3</td>
+<td class="mono">イ(Yi)</td>
+<td>カーマ（欲望・喜び）</td>
+<td class="desc">改革する年長者。独立心と鋭い洞察、進歩的視点</td>
+<td>水瓶座<span class="sa">土星</span></td>
+<td class="mono">蠍座23°20′〜蠍座26°40′</td>
+</tr><tr>
+<td class="num">4</td>
+<td class="mono">ユ(Yu)</td>
+<td>モークシャ（解脱）</td>
+<td class="desc">犠牲的な保護。霊的な深みと内面の苦悩、慈悲</td>
+<td>魚座<span class="sa">木星</span></td>
+<td class="mono">蠍座26°40′〜蠍座30°00′</td>
+</tr><tr class="gsep">
+<td class="num mcell" rowspan="4">19</td><td class="jname mcell mwide" rowspan="4">ムーラ<span class="sa">Mūla</span><div class="mInfo"><span class="mL">範囲</span>射手座0°〜13°20′</div><div class="mInfo"><span class="mL">支配星</span>ケートゥ</div><div class="mInfo"><span class="mL">神格</span>ニルリティ（破壊女神）</div><div class="mInfo"><span class="mL">象徴</span>根の束</div><div class="mDesc">根源への探求、破壊と再生、哲学性</div></td><td class="num">1</td>
+<td class="mono">イェ(Ye)</td>
+<td>ダルマ（義務・使命）</td>
+<td class="desc">根源への突進。既存のものを壊して開拓する力</td>
+<td>牡羊座<span class="sa">火星</span></td>
+<td class="mono">射手座0°00′〜射手座3°20′</td>
+</tr><tr>
+<td class="num">2</td>
+<td class="mono">ヨ(Yo)</td>
+<td>アルタ（実利・富）</td>
+<td class="desc">粘り強い探求。物質と精神の統合、着実な掘り下げ</td>
+<td>牡牛座<span class="sa">金星</span></td>
+<td class="mono">射手座3°20′〜射手座6°40′</td>
+</tr><tr>
+<td class="num">3</td>
+<td class="mono">バ(Bha)</td>
+<td>カーマ（欲望・喜び）</td>
+<td class="desc">知的な掘り下げ。研究心と探究心、根本原因の追究</td>
+<td>双子座<span class="sa">水星</span></td>
+<td class="mono">射手座6°40′〜射手座10°00′</td>
+</tr><tr>
+<td class="num">4</td>
+<td class="mono">ビ(Bhi)</td>
+<td>モークシャ（解脱）</td>
+<td class="desc">感情の根を癒す。内面の深い変容、過去の解放</td>
+<td>蟹座<span class="sa">月</span></td>
+<td class="mono">射手座10°00′〜射手座13°20′</td>
+</tr><tr class="gsep">
+<td class="num mcell" rowspan="4">20</td><td class="jname mcell mwide" rowspan="4">プールヴァ・アーシャーダー<span class="sa">P.Āṣāḍhā</span><div class="mInfo"><span class="mL">範囲</span>射手座13°20′〜26°40′</div><div class="mInfo"><span class="mL">支配星</span>金星</div><div class="mInfo"><span class="mL">神格</span>アパス（水神）</div><div class="mInfo"><span class="mL">象徴</span>扇・牙</div><div class="mDesc">不屈の楽観、説得力、浄化、勝利への確信</div></td><td class="num">1</td>
+<td class="mono">ブ(Bhu)</td>
+<td>ダルマ（義務・使命）</td>
+<td class="desc">誇り高い勝利。不屈の自信と楽観、輝く存在感</td>
+<td>獅子座<span class="sa">太陽</span></td>
+<td class="mono">射手座13°20′〜射手座16°40′</td>
+</tr><tr>
+<td class="num">2</td>
+<td class="mono">ダ(Dha)</td>
+<td>アルタ（実利・富）</td>
+<td class="desc">緻密な戦略。奉仕と自己浄化による勝利への道</td>
+<td>乙女座<span class="sa">水星</span></td>
+<td class="mono">射手座16°40′〜射手座20°00′</td>
+</tr><tr>
+<td class="num">3</td>
+<td class="mono">ファ(Pha)</td>
+<td>カーマ（欲望・喜び）</td>
+<td class="desc">説得の力。魅力と人望による成功、社交的影響力</td>
+<td>天秤座<span class="sa">金星</span></td>
+<td class="mono">射手座20°00′〜射手座23°20′</td>
+</tr><tr>
+<td class="num">4</td>
+<td class="mono">ダ(Dha)</td>
+<td>モークシャ（解脱）</td>
+<td class="desc">情熱の深み。感情の力による変革、強い信念</td>
+<td>蠍座<span class="sa">火星</span></td>
+<td class="mono">射手座23°20′〜射手座26°40′</td>
+</tr><tr class="vgrow gsep">
+<td class="num mcell" rowspan="4">21</td><td class="jname mcell mwide" rowspan="4">ウッタラ・アーシャーダー<span class="sa">U.Āṣāḍhā</span><div class="mInfo"><span class="mL">範囲</span>射手座26°40′〜山羊座10°</div><div class="mInfo"><span class="mL">支配星</span>太陽</div><div class="mInfo"><span class="mL">神格</span>ヴィシュヴェーデーヴァ</div><div class="mInfo"><span class="mL">象徴</span>象の牙</div><div class="mDesc">普遍的勝利、高潔さ、持続的な成功</div></td><td class="num">1</td>
+<td class="mono">ベ(Bhe)</td>
+<td>ダルマ（義務・使命）</td>
+<td class="desc">高い理想。倫理的な勝利への志、普遍的正義 <span class="vg">ヴァルゴッタマ</span></td>
+<td>射手座<span class="sa">木星</span></td>
+<td class="mono">射手座26°40′〜射手座30°00′</td>
+</tr><tr class="vgrow">
+<td class="num">2</td>
+<td class="mono">ボ(Bho)</td>
+<td>アルタ（実利・富）</td>
+<td class="desc">着実な野心。責任と実績の積み重ね、永続的成功 <span class="vg">ヴァルゴッタマ</span></td>
+<td>山羊座<span class="sa">土星</span></td>
+<td class="mono">山羊座0°00′〜山羊座3°20′</td>
+</tr><tr>
+<td class="num">3</td>
+<td class="mono">ジャ(Ja)</td>
+<td>カーマ（欲望・喜び）</td>
+<td class="desc">普遍的な貢献。社会改革の志、公共への奉仕</td>
+<td>水瓶座<span class="sa">土星</span></td>
+<td class="mono">山羊座3°20′〜山羊座6°40′</td>
+</tr><tr>
+<td class="num">4</td>
+<td class="mono">ジ(Ji)</td>
+<td>モークシャ（解脱）</td>
+<td class="desc">慈悲ある勝利。精神的な完成、揺るがぬ内的平和</td>
+<td>魚座<span class="sa">木星</span></td>
+<td class="mono">山羊座6°40′〜山羊座10°00′</td>
+</tr><tr class="gsep">
+<td class="num mcell" rowspan="4">22</td><td class="jname mcell mwide" rowspan="4">シュラヴァナ<span class="sa">Śravaṇa</span><div class="mInfo"><span class="mL">範囲</span>山羊座10°〜23°20′</div><div class="mInfo"><span class="mL">支配星</span>月</div><div class="mInfo"><span class="mL">神格</span>ヴィシュヌ</div><div class="mInfo"><span class="mL">象徴</span>耳・三歩</div><div class="mDesc">傾聴、学習、伝達、知識の継承</div></td><td class="num">1</td>
+<td class="mono">ジュ(Ju/Khi)</td>
+<td>ダルマ（義務・使命）</td>
+<td class="desc">積極的な学び。行動する知恵、率先して聞き伝える力</td>
+<td>牡羊座<span class="sa">火星</span></td>
+<td class="mono">山羊座10°00′〜山羊座13°20′</td>
+</tr><tr>
+<td class="num">2</td>
+<td class="mono">ジェ(Je)</td>
+<td>アルタ（実利・富）</td>
+<td class="desc">着実な知識の蓄積。実用的な学識と保存の才</td>
+<td>牡牛座<span class="sa">金星</span></td>
+<td class="mono">山羊座13°20′〜山羊座16°40′</td>
+</tr><tr>
+<td class="num">3</td>
+<td class="mono">ジョ(Jo)</td>
+<td>カーマ（欲望・喜び）</td>
+<td class="desc">伝達の才。言葉と情報を扱う達人、教育者の資質</td>
+<td>双子座<span class="sa">水星</span></td>
+<td class="mono">山羊座16°40′〜山羊座20°00′</td>
+</tr><tr>
+<td class="num">4</td>
+<td class="mono">ガ(Gha/Kha)</td>
+<td>モークシャ（解脱）</td>
+<td class="desc">共感的な傾聴。心を理解し養う力、深い思いやり</td>
+<td>蟹座<span class="sa">月</span></td>
+<td class="mono">山羊座20°00′〜山羊座23°20′</td>
+</tr><tr class="gsep">
+<td class="num mcell" rowspan="4">23</td><td class="jname mcell mwide" rowspan="4">ダニシュター<span class="sa">Dhaniṣṭhā</span><div class="mInfo"><span class="mL">範囲</span>山羊座23°20′〜水瓶座6°40′</div><div class="mInfo"><span class="mL">支配星</span>火星</div><div class="mInfo"><span class="mL">神格</span>ヴァス神群</div><div class="mInfo"><span class="mL">象徴</span>太鼓</div><div class="mDesc">富、リズム感、音楽、名声</div></td><td class="num">1</td>
+<td class="mono">ガ(Ga)</td>
+<td>ダルマ（義務・使命）</td>
+<td class="desc">華やかな名声。音楽・リズムの才と自己表現力</td>
+<td>獅子座<span class="sa">太陽</span></td>
+<td class="mono">山羊座23°20′〜山羊座26°40′</td>
+</tr><tr>
+<td class="num">2</td>
+<td class="mono">ギ(Gi)</td>
+<td>アルタ（実利・富）</td>
+<td class="desc">技巧的な精密さ。勤勉さと細部へのこだわり</td>
+<td>乙女座<span class="sa">水星</span></td>
+<td class="mono">山羊座26°40′〜山羊座30°00′</td>
+</tr><tr>
+<td class="num">3</td>
+<td class="mono">グ(Gu)</td>
+<td>カーマ（欲望・喜び）</td>
+<td class="desc">社交的な富。調和の感覚と芸術的才能、人脈による繁栄</td>
+<td>天秤座<span class="sa">金星</span></td>
+<td class="mono">水瓶座0°00′〜水瓶座3°20′</td>
+</tr><tr>
+<td class="num">4</td>
+<td class="mono">ゲ(Ge)</td>
+<td>モークシャ（解脱）</td>
+<td class="desc">深い野心。強い集中力と変容の力、粘り強い上昇志向</td>
+<td>蠍座<span class="sa">火星</span></td>
+<td class="mono">水瓶座3°20′〜水瓶座6°40′</td>
+</tr><tr class="gsep">
+<td class="num mcell" rowspan="4">24</td><td class="jname mcell mwide" rowspan="4">シャタビシャー<span class="sa">Śatabhiṣā</span><div class="mInfo"><span class="mL">範囲</span>水瓶座6°40′〜20°</div><div class="mInfo"><span class="mL">支配星</span>ラーフ</div><div class="mInfo"><span class="mL">神格</span>ヴァルナ（水天）</div><div class="mInfo"><span class="mL">象徴</span>百の癒し手/円</div><div class="mDesc">治癒、神秘、孤独、秘密の探求</div></td><td class="num">1</td>
+<td class="mono">ゴ(Go)</td>
+<td>ダルマ（義務・使命）</td>
+<td class="desc">哲学的な治癒。真理と信念による癒しの力</td>
+<td>射手座<span class="sa">木星</span></td>
+<td class="mono">水瓶座6°40′〜水瓶座10°00′</td>
+</tr><tr>
+<td class="num">2</td>
+<td class="mono">サ(Sa)</td>
+<td>アルタ（実利・富）</td>
+<td class="desc">実践的な医術。規律ある探求、体系的な治療の才</td>
+<td>山羊座<span class="sa">土星</span></td>
+<td class="mono">水瓶座10°00′〜水瓶座13°20′</td>
+</tr><tr class="vgrow">
+<td class="num">3</td>
+<td class="mono">スィ(Si)</td>
+<td>カーマ（欲望・喜び）</td>
+<td class="desc">革新的な科学。独創的な発見と探求心 <span class="vg">ヴァルゴッタマ</span></td>
+<td>水瓶座<span class="sa">土星</span></td>
+<td class="mono">水瓶座13°20′〜水瓶座16°40′</td>
+</tr><tr>
+<td class="num">4</td>
+<td class="mono">ス(Su)</td>
+<td>モークシャ（解脱）</td>
+<td class="desc">神秘的な直感。霊的な癒しの力、見えない世界への感受性</td>
+<td>魚座<span class="sa">木星</span></td>
+<td class="mono">水瓶座16°40′〜水瓶座20°00′</td>
+</tr><tr class="gsep">
+<td class="num mcell" rowspan="4">25</td><td class="jname mcell mwide" rowspan="4">プールヴァ・バードラパダー<span class="sa">P.Bhādra</span><div class="mInfo"><span class="mL">範囲</span>水瓶座20°〜魚座3°20′</div><div class="mInfo"><span class="mL">支配星</span>木星</div><div class="mInfo"><span class="mL">神格</span>アジャ・エーカパーダ</div><div class="mInfo"><span class="mL">象徴</span>寝台の前脚・二面</div><div class="mDesc">激情、変容、理想主義と苦行</div></td><td class="num">1</td>
+<td class="mono">セ(Se)</td>
+<td>ダルマ（義務・使命）</td>
+<td class="desc">激しい理想。改革への情熱、燃えるような信念</td>
+<td>牡羊座<span class="sa">火星</span></td>
+<td class="mono">水瓶座20°00′〜水瓶座23°20′</td>
+</tr><tr>
+<td class="num">2</td>
+<td class="mono">ソ(So)</td>
+<td>アルタ（実利・富）</td>
+<td class="desc">現実的な理想主義。粘り強く社会を変える実行力</td>
+<td>牡牛座<span class="sa">金星</span></td>
+<td class="mono">水瓶座23°20′〜水瓶座26°40′</td>
+</tr><tr>
+<td class="num">3</td>
+<td class="mono">ダ(Da)</td>
+<td>カーマ（欲望・喜び）</td>
+<td class="desc">知的な二面性。深い思想と鋭い弁論、内面の葛藤</td>
+<td>双子座<span class="sa">水星</span></td>
+<td class="mono">水瓶座26°40′〜水瓶座30°00′</td>
+</tr><tr>
+<td class="num">4</td>
+<td class="mono">ディ(Di)</td>
+<td>モークシャ（解脱）</td>
+<td class="desc">感情の深化。自己犠牲と共感、霊的な変容</td>
+<td>蟹座<span class="sa">月</span></td>
+<td class="mono">魚座0°00′〜魚座3°20′</td>
+</tr><tr class="gsep">
+<td class="num mcell" rowspan="4">26</td><td class="jname mcell mwide" rowspan="4">ウッタラ・バードラパダー<span class="sa">U.Bhādra</span><div class="mInfo"><span class="mL">範囲</span>魚座3°20′〜16°40′</div><div class="mInfo"><span class="mL">支配星</span>土星</div><div class="mInfo"><span class="mL">神格</span>アヒルブドニヤ（深海の蛇）</div><div class="mInfo"><span class="mL">象徴</span>寝台の後脚</div><div class="mDesc">深い知恵、忍耐、慈悲、内的安定</div></td><td class="num">1</td>
+<td class="mono">ドゥ(Du)</td>
+<td>ダルマ（義務・使命）</td>
+<td class="desc">静かな威厳。内に秘めた力と寛容さ、落ち着いた指導力</td>
+<td>獅子座<span class="sa">太陽</span></td>
+<td class="mono">魚座3°20′〜魚座6°40′</td>
+</tr><tr>
+<td class="num">2</td>
+<td class="mono">タ(Tha)</td>
+<td>アルタ（実利・富）</td>
+<td class="desc">献身的な知恵。細やかな奉仕と実務的な英知</td>
+<td>乙女座<span class="sa">水星</span></td>
+<td class="mono">魚座6°40′〜魚座10°00′</td>
+</tr><tr>
+<td class="num">3</td>
+<td class="mono">ジャ(Jha)</td>
+<td>カーマ（欲望・喜び）</td>
+<td class="desc">調和的な英知。公平さと安定、争いを鎮める力</td>
+<td>天秤座<span class="sa">金星</span></td>
+<td class="mono">魚座10°00′〜魚座13°20′</td>
+</tr><tr>
+<td class="num">4</td>
+<td class="mono">ニャ(Na/Tra)</td>
+<td>モークシャ（解脱）</td>
+<td class="desc">深遠な神秘。瞑想と変容の力、宇宙的な知恵</td>
+<td>蠍座<span class="sa">火星</span></td>
+<td class="mono">魚座13°20′〜魚座16°40′</td>
+</tr><tr class="gsep">
+<td class="num mcell" rowspan="4">27</td><td class="jname mcell mwide" rowspan="4">レーヴァティー<span class="sa">Revatī</span><div class="mInfo"><span class="mL">範囲</span>魚座16°40′〜30°</div><div class="mInfo"><span class="mL">支配星</span>水星</div><div class="mInfo"><span class="mL">神格</span>プーシャン（旅の守護神）</div><div class="mInfo"><span class="mL">象徴</span>魚・太鼓</div><div class="mDesc">養育、旅の守護、優しさ、完成と移行</div></td><td class="num">1</td>
+<td class="mono">デ(De)</td>
+<td>ダルマ（義務・使命）</td>
+<td class="desc">楽観的な導き。旅と学びの守護、明るい指導力</td>
+<td>射手座<span class="sa">木星</span></td>
+<td class="mono">魚座16°40′〜魚座20°00′</td>
+</tr><tr>
+<td class="num">2</td>
+<td class="mono">ド(Do)</td>
+<td>アルタ（実利・富）</td>
+<td class="desc">実務的な養育。責任感ある保護、堅実な支援</td>
+<td>山羊座<span class="sa">土星</span></td>
+<td class="mono">魚座20°00′〜魚座23°20′</td>
+</tr><tr>
+<td class="num">3</td>
+<td class="mono">チャ(Cha)</td>
+<td>カーマ（欲望・喜び）</td>
+<td class="desc">博愛的な支援。社会への貢献、広い慈しみ</td>
+<td>水瓶座<span class="sa">土星</span></td>
+<td class="mono">魚座23°20′〜魚座26°40′</td>
+</tr><tr class="vgrow">
+<td class="num">4</td>
+<td class="mono">チ(Chi)</td>
+<td>モークシャ（解脱）</td>
+<td class="desc">完全なる慈悲。霊的完成と解脱、最終地点の優しさ <span class="vg">ヴァルゴッタマ</span></td>
+<td>魚座<span class="sa">木星</span></td>
+<td class="mono">魚座26°40′〜魚座30°00′</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<p class="foot">ナクシャトラは黄道360°を27等分（各13°20′）したインド占星術の月宿で、パダはその4等分（ナヴァームシャの1区分に一致）です。解説は伝統的な象徴体系に基づく一般的な性質の要約であり、流派により解釈が異なる場合があります。音節に異表記があるもの（シュラヴァナ第1のJu/Khiなど）は併記しています。度数の「′」は小数点ではなく「分」（1度＝60分）を表す60進法の記号で、パダ幅の3°20′は3.333…度（＝10/3度）、ナクシャトラ幅の13°20′は13.333…度に相当します。3°20′×108パダ＝360°で正確に黄道一周となります。</p>
+</main>
+</body>
+</html>
