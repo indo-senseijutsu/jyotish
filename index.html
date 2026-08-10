@@ -205,7 +205,7 @@ select option,select optgroup{background:#eaf1f9; color:var(--ivory)}
   </head>
   <body>
     <div id="root"></div>
-        <!-- 補記：月のナクシャトラからヨニ（オス・メス）を上書き表示するカスタムプログラム -->
+    <!-- 補記：ナクシャトラ名を自動検知して性別付きヨニを強制上書きする強化版プログラム -->
     <script>
       (function() {
         const yoniMap = {
@@ -218,28 +218,37 @@ select option,select optgroup{background:#eaf1f9; color:var(--ivory)}
           "P.Bhādrapadā": "ライオン（オス）", "Dhaniṣṭhā": "ライオン（メス）", "U.Āṣāḍhā": "マングース（オス）"
         };
 
-        // 画面が更新されるのを監視して、月（Moon）の行を見つけたらヨニを書き加える設定
-        const observer = new MutationObserver(() => {
-          // 画面内のすべてのテーブルの行をチェック
-          const rows = document.querySelectorAll("tr");
-          rows.forEach(row => {
-            const cells = row.querySelectorAll("td");
-            // 行の最初のセルが「月」または「Moon」の場合
-            if (cells.length >= 6 && (cells[0].innerText.includes("月") || cells[0].innerText.toLowerCase().includes("moon"))) {
-              const nakshatra = cells[3].innerText.trim(); // ナクシャトラ名を取得
-              const yoniText = yoniMap[nakshatra];
-              // すでにヨニが書かれていない場合だけ、状態（6番目のセル）に書き加える
-              if (yoniText && !cells[5].innerText.includes("ヨニ")) {
-                cells[5].innerHTML = `${cells[5].innerText} <span style="color:#f97316; font-weight:bold;">(ヨニ: ${yoniText})</span>`;
+        const updateYoniDisplay = () => {
+          // 画面内のすべてのテーブルのセル(td)をチェック
+          const cells = document.querySelectorAll("td");
+          cells.forEach(cell => {
+            const text = cell.innerText.trim();
+            // セルの中身が「Jyeṣṭhā」などのナクシャトラ名と完全一致するかチェック
+            if (yoniMap[text]) {
+              const yoniText = yoniMap[text];
+              const row = cell.parentElement; // そのセルのある行(tr)を取得
+              
+              // この行の中に「月（またはMoon）」が含まれているか、かつ、すでにヨニが書き込まれていないか
+              if ((row.innerText.includes("月") || row.innerText.toLowerCase().includes("moon")) && !row.innerText.includes("ヨニ")) {
+                // 行の一番最後のセル（状態やモーションの列）を取得
+                const targetCell = row.lastElementChild;
+                if (targetCell) {
+                  targetCell.innerHTML += ` <span style="color:#e05a00; font-weight:bold; font-size:12px;">(ヨニ: ${yoniText})</span>`;
+                }
               }
             }
           });
-        });
+        };
 
-        // 監視を開始
+        // 画面の書き換えを監視する設定（Reactの遅延描画に対応）
+        const observer = new MutationObserver(updateYoniDisplay);
         observer.observe(document.body, { childList: true, subtree: true });
+        
+        // 念のため最初の読み込み時にも実行
+        window.addEventListener('DOMContentLoaded', updateYoniDisplay);
       })();
     </script>
+
 
   </body>
 </html>
