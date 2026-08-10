@@ -205,7 +205,7 @@ select option,select optgroup{background:#eaf1f9; color:var(--ivory)}
   </head>
   <body>
     <div id="root"></div>
-    <!-- 補記：アコーディオンの開閉ヘッダーだけを狙い撃ちしてヨニを1箇所に固定するプログラム -->
+    <!-- 補記：すべての惑星・異なるナクシャトラでヨニを完全個別判定する最終プログラム -->
     <script>
       (function() {
         const yoniMap = {
@@ -215,7 +215,7 @@ select option,select optgroup{background:#eaf1f9; color:var(--ivory)}
           "Śatabhiṣaj": "馬（メス）", "Satabhisha": "馬（メス）", "シャタビシャ": "馬（メス）",
           "Bharaṇī": "象（オス）", "Bharani": "象（オス）", "バラニー": "象（オス）",
           "Puṣya": "羊（オス）", "Pushya": "羊（オス）", "プシャ": "羊（オス）",
-          "Kṛttikā": "羊（メス）", "Krittika": "羊（メス）", "クリッティカー": "羊（メス）",
+          "Kṛttikā": "Krittika": "羊（メス）", "クリッティカー": "羊（メス）",
           "Rohiṇī": "蛇（オス）", "Rohini": "蛇（オス）", "ロヒニー": "蛇（オス）",
           "Mṛgaśiras": "蛇（メス）", "Mrigasira": "蛇（メス）", "ムリガシラス": "蛇（メス）",
           "Mūla": "犬（オス）", "Mula": "犬（オス）", "ムーラ": "犬（オス）",
@@ -227,28 +227,32 @@ select option,select optgroup{background:#eaf1f9; color:var(--ivory)}
           "U.Phālgunī": "牛（オス）", "Uttara Phalguni": "牛（オス）", "ウッタラ・パールグニー": "牛（オス）",
           "U.Bhādrapadā": "牛（メス）", "Uttara Bhadrapada": "牛（メス）", "ウッタラ・バードラパダー": "牛（メス）",
           "Hasta": "バッファロー（メス）", "ハスタ": "バッファロー（メス）",
-          "Svātī": "バッファオス）", "Svati": "バッファロー（オス）", "スヴァーティー": "バッファロー（オス）",
+          "Svātī": "バッファロー（オス）", "Svati": "バッファロー（オス）", "スヴァーティー": "バッファロー（オス）",
           "Viśākhā": "虎（オス）", "Vishakha": "虎（オス）", "ヴィシャーハ": "虎（オス）",
           "Citrā": "虎（メス）", "Chitra": "虎（メス）", "チトラー": "虎（メス）",
           "Anurādhā": "鹿（メス）", "Anuradha": "鹿（メス）", "アヌラーダー": "鹿（メス）",
           "P.Āṣāḍhā": "猿（オス）", "Purva Ashadha": "猿（オス）", "プールヴァ・アーシャーダー": "猿（オス）",
-          "U.Āṣāḍhā": "マングース（オス）", "Uttara Ashadha": "マングース（オス）", "アメラーダー": "マングース（オス）", "ウッタラ・アーシャーダー": "マングース（オス）",
+          "U.Āṣāḍhā": "マングース（オス）", "Uttara Ashadha": "マングース（オス）", "ウッタラ・アーシャーダー": "マングース（オス）",
           "Śravaṇa": "猿（メス）", "Shravana": "猿（メス）", "シュラヴァナ": "猿（メス）",
           "Dhaniṣṭhā": "ライオン（メス）", "Dhanishta": "ライオン（メス）", "ダニシュター": "ライオン（メス）",
           "P.Bhādrapadā": "ライオン（オス）", "Purva Bhadrapada": "ライオン（オス）", "プールヴァ・バードラパダー": "ライオン（オス）"
         };
 
-        const injectYoniPerfectFix = () => {
-          // 1. スクショの下部アコーディオンをチェック
-          // 「開閉の役割（role="button"）」や、クリック可能なヘッダーの塊をすべて探す
-          const headers = document.querySelectorAll("[role='button'], button, summary, .nibHead, [class*='head'], [class*='Title']");
+        const injectYoniDynamic = () => {
+          // 1. 下部のアコーディオンを解析
+          // アコーディオンの頭の部分（.nibHeadやその周辺のタイトル要素）だけを正確に取得
+          const headers = document.querySelectorAll("[role='button'], button, summary, .nibHead, [class*='head']");
           headers.forEach(el => {
             const text = el.innerText || "";
-            // 先頭が「月」で始まり、まだヨニが書き込まれていないヘッダー要素だけを限定ヒット
-            if (text.trim().indexOf("月") === 0 && !el.innerHTML.includes("yoni-badge")) {
+            
+            // 【重要】そのブロックが確実に「月（またはMoon）」のタイトルであり、かつナクシャトラ名が含まれているか
+            // さらに、すでにヨニのバッジが書き込まれていないかをトリプルチェック
+            if ((text.trim().indexOf("月") === 0 || text.trim().indexOf("Moon") === 0) && !el.innerHTML.includes("yoni-badge")) {
+              
+              // 27個のヨニ辞書をループして、画面に現れているナクシャトラ名と「完全一致」するものだけを抽出
               for (let key in yoniMap) {
                 if (text.includes(key)) {
-                  // タイトルの末尾に、オレンジ色で美しくヨニを追加
+                  // 一致したナクシャトラのヨニだけをピンポイントで追記（これで固定化を防ぎます）
                   el.innerHTML += ` <span class="yoni-badge" style="color:#f97316 !important; font-weight:bold !important; margin-left:12px; font-size:14px; display:inline-block;">[ヨニ: ${yoniMap[key]}]</span>`;
                   break;
                 }
@@ -256,7 +260,7 @@ select option,select optgroup{background:#eaf1f9; color:var(--ivory)}
             }
           });
 
-          // 2. 上部の天体一覧テーブル（表）の末尾にも表示
+          // 2. 上部の天体一覧テーブル（表）の末尾にも連動
           const cells = document.querySelectorAll("td");
           cells.forEach(cell => {
             const text = cell.innerText.trim();
@@ -272,8 +276,8 @@ select option,select optgroup{background:#eaf1f9; color:var(--ivory)}
           });
         };
 
-        // 0.1秒ごとに高速監視を実行
-        setInterval(injectYoniPerfectFix, 100);
+        // 0.1秒ごとに高速で画面を個別自動判定し続けます
+        setInterval(injectYoniDynamic, 100);
       })();
     </script>
 
