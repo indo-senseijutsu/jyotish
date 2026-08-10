@@ -205,7 +205,7 @@ select option,select optgroup{background:#eaf1f9; color:var(--ivory)}
   </head>
   <body>
     <div id="root"></div>
-    <!-- 補記：すべての惑星・異なるナクシャトラでヨニを完全個別判定する最終プログラム -->
+    <!-- 補記：Reactの複雑なタグ分断を完全突破し、ヨニを1箇所に自動判定表示する最終プログラム -->
     <script>
       (function() {
         const yoniMap = {
@@ -238,22 +238,34 @@ select option,select optgroup{background:#eaf1f9; color:var(--ivory)}
           "P.Bhādrapadā": "ライオン（オス）", "Purva Bhadrapada": "ライオン（オス）", "プールヴァ・バードラパダー": "ライオン（オス）"
         };
 
-        const injectYoniDynamicFix = () => {
-          // 1. 下部のアコーディオンを解析
-          // 開閉ボタンやヘッダー要素（.nibHeadなど）をすべて網羅してチェック
-          const headers = document.querySelectorAll("[role='button'], button, summary, .nibHead, [class*='head'], [class*='Title']");
-          headers.forEach(el => {
-            const text = el.innerText || "";
+        const injectYoniUltimate = () => {
+          // 1. 下部のアコーディオンを解析（すべての要素を対象にする）
+          const allElements = document.querySelectorAll("div, button, h3, span, p");
+          allElements.forEach(el => {
+            // 要素の直系テキスト（子どもを排除したプレーンテキスト）を結合して取得
+            const fullText = Array.from(el.childNodes)
+              .map(node => node.nodeType === 3 ? node.nodeValue : node.innerText)
+              .join(" ")
+              .trim();
+
+            // 「月」または「Moon」という独立した文字が要素内に存在するかチェック
+            const hasMoon = fullText === "月" || fullText === "Moon" || el.innerText === "月" || el.innerText === "Moon";
             
-            // 【変更点】位置に関係なく、要素の中に「月」という文字が含まれているかをチェック
-            // さらに、解説の長い文章にダブるのを防ぐため、文字数が100文字未満のタイトル部分に限定
-            if ((text.includes("月") || text.includes("Moon")) && text.length < 100 && !el.innerHTML.includes("yoni-badge")) {
+            // その要素自体、またはそのすぐ親要素がすでに処理済みならスキップ
+            if (hasMoon && !el.innerHTML.includes("yoni-badge") && !el.parentElement.innerHTML.includes("yoni-badge")) {
               
-              for (let key in yoniMap) {
-                if (text.includes(key)) {
-                  // 一致したナクシャトラのヨニだけをピンポイントで追記
-                  el.innerHTML += ` <span class="yoni-badge" style="color:#f97316 !important; font-weight:bold !important; margin-left:12px; font-size:14px; display:inline-block;">[ヨニ: ${yoniMap[key]}]</span>`;
-                  break;
+              // この要素が所属している「アコーディオンのヘッダー全体（外枠）」のテキストを取得
+              // これにより、離れた場所にある解説文を巻き込まず、タイトル行だけを狙い撃ちします
+              const containerText = el.parentElement ? el.parentElement.innerText : el.innerText;
+              
+              if (containerText.length < 150) {
+                for (let key in yoniMap) {
+                  if (containerText.includes(key)) {
+                    // 親要素（ヘッダーの塊）の末尾に、鮮やかなオレンジ色の文字でヨニを追加
+                    const targetContainer = el.parentElement || el;
+                    targetContainer.innerHTML += ` <span class="yoni-badge" style="color:#f97316 !important; font-weight:bold !important; margin-left:12px; font-size:14px; display:inline-block;">[ヨニ: ${yoniMap[key]}]</span>`;
+                    break;
+                  }
                 }
               }
             }
@@ -275,17 +287,10 @@ select option,select optgroup{background:#eaf1f9; color:var(--ivory)}
           });
         };
 
-        // 0.1秒ごとに高速で画面をチェックし、確実に上書きし続けます
-        setInterval(injectYoniDynamicFix, 100);
+        // 0.1秒ごとに画面の変化をキャッチして強制ねじ込み
+        setInterval(injectYoniUltimate, 100);
       })();
     </script>
-
-
-
-
-
-
-
 
   </body>
 </html>
