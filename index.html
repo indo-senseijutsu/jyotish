@@ -232,27 +232,26 @@ select option,select optgroup{background:#eaf1f9; color:var(--ivory)}
           "Citrā": "虎（メス）", "Chitra": "虎（メス）", "チトラー": "虎（メス）",
           "Anurādhā": "鹿（メス）", "Anuradha": "鹿（メス）", "アヌラーダー": "鹿（メス）",
           "P.Āṣāḍhā": "猿（オス）", "Purva Ashadha": "猿（オス）", "プールヴァ・アーシャーダー": "猿（オス）",
-          "U.Āṣāḍhā": "マングース（オス）", "Uttara Ashadha": "マングース（オス）", "ウッタラ・アーシャーダー": "マングース（オス）",
+          "U.Āṣāḍhā": "マングース（オス）", "Uttara Ashadha": "マングース（オス）", "アメラーダー": "マングース（オス）", "ウッタラ・アーシャーダー": "マングース（オス）",
           "Śravaṇa": "猿（メス）", "Shravana": "猿（メス）", "シュラヴァナ": "猿（メス）",
           "Dhaniṣṭhā": "ライオン（メス）", "Dhanishta": "ライオン（メス）", "ダニシュター": "ライオン（メス）",
           "P.Bhādrapadā": "ライオン（オス）", "Purva Bhadrapada": "ライオン（オス）", "プールヴァ・バードラパダー": "ライオン（オス）"
         };
 
-        const injectYoniDynamic = () => {
+        const injectYoniDynamicFix = () => {
           // 1. 下部のアコーディオンを解析
-          // アコーディオンの頭の部分（.nibHeadやその周辺のタイトル要素）だけを正確に取得
-          const headers = document.querySelectorAll("[role='button'], button, summary, .nibHead, [class*='head']");
+          // 開閉ボタンやヘッダー要素（.nibHeadなど）をすべて網羅してチェック
+          const headers = document.querySelectorAll("[role='button'], button, summary, .nibHead, [class*='head'], [class*='Title']");
           headers.forEach(el => {
             const text = el.innerText || "";
             
-            // 【重要】そのブロックが確実に「月（またはMoon）」のタイトルであり、かつナクシャトラ名が含まれているか
-            // さらに、すでにヨニのバッジが書き込まれていないかをトリプルチェック
-            if ((text.trim().indexOf("月") === 0 || text.trim().indexOf("Moon") === 0) && !el.innerHTML.includes("yoni-badge")) {
+            // 【変更点】位置に関係なく、要素の中に「月」という文字が含まれているかをチェック
+            // さらに、解説の長い文章にダブるのを防ぐため、文字数が100文字未満のタイトル部分に限定
+            if ((text.includes("月") || text.includes("Moon")) && text.length < 100 && !el.innerHTML.includes("yoni-badge")) {
               
-              // 27個のヨニ辞書をループして、画面に現れているナクシャトラ名と「完全一致」するものだけを抽出
               for (let key in yoniMap) {
                 if (text.includes(key)) {
-                  // 一致したナクシャトラのヨニだけをピンポイントで追記（これで固定化を防ぎます）
+                  // 一致したナクシャトラのヨニだけをピンポイントで追記
                   el.innerHTML += ` <span class="yoni-badge" style="color:#f97316 !important; font-weight:bold !important; margin-left:12px; font-size:14px; display:inline-block;">[ヨニ: ${yoniMap[key]}]</span>`;
                   break;
                 }
@@ -260,7 +259,7 @@ select option,select optgroup{background:#eaf1f9; color:var(--ivory)}
             }
           });
 
-          // 2. 上部の天体一覧テーブル（表）の末尾にも連動
+          // 2. 上部の天体一覧テーブル（表）の末尾にも表示
           const cells = document.querySelectorAll("td");
           cells.forEach(cell => {
             const text = cell.innerText.trim();
@@ -276,10 +275,11 @@ select option,select optgroup{background:#eaf1f9; color:var(--ivory)}
           });
         };
 
-        // 0.1秒ごとに高速で画面を個別自動判定し続けます
-        setInterval(injectYoniDynamic, 100);
+        // 0.1秒ごとに高速で画面をチェックし、確実に上書きし続けます
+        setInterval(injectYoniDynamicFix, 100);
       })();
     </script>
+
 
 
 
