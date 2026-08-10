@@ -205,5 +205,41 @@ select option,select optgroup{background:#eaf1f9; color:var(--ivory)}
   </head>
   <body>
     <div id="root"></div>
+        <!-- 補記：月のナクシャトラからヨニ（オス・メス）を上書き表示するカスタムプログラム -->
+    <script>
+      (function() {
+        const yoniMap = {
+          "Aśvinī": "馬（オス）", "Śatabhiṣaj": "馬（メス）", "Bharaṇī": "象（オス）", "Revatī": "象（メス）",
+          "Puṣya": "羊（オス）", "Kṛttikā": "羊（メス）", "Rohiṇī": "蛇（オス）", "Mṛgaśiras": "蛇（メス）",
+          "Mūla": "犬（オス）", "Ārdrā": "犬（メス）", "Aśleṣā": "猫（オス）", "Punarvasu": "猫（メス）",
+          "Maghā": "ネズミ（オス）", "P.Phālgunī": "ネズミ（メス）", "U.Phālgunī": "牛（オス）", "U.Bhādrapadā": "牛（メス）",
+          "Svātī": "バッファロー（オス）", "Hasta": "バッファロー（メス）", "Viśākhā": "虎（オス）", "Citrā": "虎（メス）",
+          "Jyeṣṭhā": "鹿（オス）", "Anurādhā": "鹿（メス）", "P.Āṣāḍhā": "猿（オス）", "Śravaṇa": "猿（メス）",
+          "P.Bhādrapadā": "ライオン（オス）", "Dhaniṣṭhā": "ライオン（メス）", "U.Āṣāḍhā": "マングース（オス）"
+        };
+
+        // 画面が更新されるのを監視して、月（Moon）の行を見つけたらヨニを書き加える設定
+        const observer = new MutationObserver(() => {
+          // 画面内のすべてのテーブルの行をチェック
+          const rows = document.querySelectorAll("tr");
+          rows.forEach(row => {
+            const cells = row.querySelectorAll("td");
+            // 行の最初のセルが「月」または「Moon」の場合
+            if (cells.length >= 6 && (cells[0].innerText.includes("月") || cells[0].innerText.toLowerCase().includes("moon"))) {
+              const nakshatra = cells[3].innerText.trim(); // ナクシャトラ名を取得
+              const yoniText = yoniMap[nakshatra];
+              // すでにヨニが書かれていない場合だけ、状態（6番目のセル）に書き加える
+              if (yoniText && !cells[5].innerText.includes("ヨニ")) {
+                cells[5].innerHTML = `${cells[5].innerText} <span style="color:#f97316; font-weight:bold;">(ヨニ: ${yoniText})</span>`;
+              }
+            }
+          });
+        });
+
+        // 監視を開始
+        observer.observe(document.body, { childList: true, subtree: true });
+      })();
+    </script>
+
   </body>
 </html>
