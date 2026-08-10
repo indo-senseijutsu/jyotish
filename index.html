@@ -205,10 +205,9 @@ select option,select optgroup{background:#eaf1f9; color:var(--ivory)}
   </head>
   <body>
     <div id="root"></div>
-    <!-- 補記：月のナクシャトラ（カタカナ・英語両対応）・アコーディオン強制上書きプログラム -->
+    <!-- 補記：Reactの超高速上書きを完全に上回る、ヨニ強制ねじ込みプログラム -->
     <script>
       (function() {
-        // カタカナ表記と英語表記の両方を網羅したヨニ辞書
         const yoniMap = {
           "Jyeṣṭhā": "鹿（オス）", "Jyeshtha": "鹿（オス）", "ジェーシュター": "鹿（オス）",
           "Revatī": "象（メス）", "Revati": "象（メス）", "レーヴァティー": "象（メス）",
@@ -216,7 +215,7 @@ select option,select optgroup{background:#eaf1f9; color:var(--ivory)}
           "Śatabhiṣaj": "馬（メス）", "Satabhisha": "馬（メス）", "シャタビシャ": "馬（メス）",
           "Bharaṇī": "象（オス）", "Bharani": "象（オス）", "バラニー": "象（オス）",
           "Puṣya": "羊（オス）", "Pushya": "羊（オス）", "プシャ": "羊（オス）",
-          "Kṛttikā": "Krittika": "羊（メス）", "クリッティカー": "羊（メス）",
+          "Kṛttikā": "羊（メス）", "Krittika": "羊（メス）", "クリッティカー": "羊（メス）",
           "Rohiṇī": "蛇（オス）", "Rohini": "蛇（オス）", "ロヒニー": "蛇（オス）",
           "Mṛgaśiras": "蛇（メス）", "Mrigasira": "蛇（メス）", "ムリガシラス": "蛇（メス）",
           "Mūla": "犬（オス）", "Mula": "犬（オス）", "ムーラ": "犬（オス）",
@@ -239,44 +238,43 @@ select option,select optgroup{background:#eaf1f9; color:var(--ivory)}
           "P.Bhādrapadā": "ライオン（オス）", "Purva Bhadrapada": "ライオン（オス）", "プールヴァ・バードラパダー": "ライオン（オス）"
         };
 
-        const injectYoni = () => {
-          // 1. スクショで見せてくださった「下部アコーディオン（解説ブロック）」への上書き
-          const blocks = document.querySelectorAll("div, button, h3, span");
-          blocks.forEach(el => {
-            // 要素が「月」という文字で始まり、まだヨニが書き込まれていない場合
-            if (el.innerText && el.innerText.trim().indexOf("月") === 0 && !el.innerText.includes("ヨニ")) {
+        const injectYoniForce = () => {
+          // 1. スクショで見せてくださった下部アコーディオン（解説ブロック）のタイトルを強制上書き
+          const allElements = document.querySelectorAll("div, button, h3, span");
+          allElements.forEach(el => {
+            // テキストが「月」から始まり、まだヨニが書き込まれていない要素を狙い撃ち
+            if (el.innerText && el.innerText.trim().indexOf("月") === 0 && !el.innerHTML.includes("ヨニ")) {
               for (let key in yoniMap) {
                 if (el.innerText.includes(key)) {
-                  // タイトルのナクシャトラ名のすぐ横に、オレンジ色で[ヨニ属性]を強制挿入
-                  el.innerHTML = el.innerHTML.replace(key, `${key} <span style="color:#f97316; font-weight:bold; margin-left:12px; font-size:14px;">[ヨニ: ${yoniMap[key]}]</span>`);
+                  // 元のテキストを完全に置き換えるのではなく、安全にヨニを追記
+                  el.innerHTML += ` <span class="yoni-badge" style="color:#f97316 !important; font-weight:bold !important; margin-left:12px; font-size:14px; display:inline-block;">[ヨニ: ${yoniMap[key]}]</span>`;
                   break;
                 }
               }
             }
           });
 
-          // 2. 上部のテーブル（表）への上書き
+          // 2. 上部のテーブル（表）の「月」の行の末尾にも強制上書き
           const cells = document.querySelectorAll("td");
           cells.forEach(cell => {
             const text = cell.innerText.trim();
             if (yoniMap[text]) {
               const row = cell.parentElement;
-              if ((row.innerText.includes("月") || row.innerText.toLowerCase().includes("moon")) && !row.innerText.includes("ヨニ")) {
+              if ((row.innerText.includes("月") || row.innerText.toLowerCase().includes("moon")) && !row.innerHTML.includes("yoni-added")) {
                 const targetCell = row.lastElementChild;
                 if (targetCell) {
-                  targetCell.innerHTML += ` <span style="color:#e05a00; font-weight:bold; font-size:12px;">(ヨニ: ${yoniMap[text]})</span>`;
+                  targetCell.innerHTML += ` <span class="yoni-added" style="color:#e05a00 !important; font-weight:bold !important; font-size:12px;">(ヨニ: ${yoniMap[text]})</span>`;
                 }
               }
             }
           });
         };
 
-        // Reactの描画ズレ（遅延）に完全対応するための監視設定
-        const observer = new MutationObserver(injectYoni);
-        observer.observe(document.body, { childList: true, subtree: true });
-        window.addEventListener('DOMContentLoaded', injectYoni);
+        // Reactがどんなに高速に画面を書き換えても、0.01秒ごとに監視して文字をねじ込み続ける無限ループタイマーを設定
+        setInterval(injectYoniForce, 100);
       })();
     </script>
+
 
 
 
