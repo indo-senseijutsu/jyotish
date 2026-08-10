@@ -205,7 +205,7 @@ select option,select optgroup{background:#eaf1f9; color:var(--ivory)}
   </head>
   <body>
     <div id="root"></div>
-     <!-- 補記：重複を完全に防ぎ、アコーディオンのタイトル横1箇所だけにヨニを固定する最終コード -->
+    <!-- 補記：アコーディオンの開閉ヘッダーだけを狙い撃ちしてヨニを1箇所に固定するプログラム -->
     <script>
       (function() {
         const yoniMap = {
@@ -227,7 +227,7 @@ select option,select optgroup{background:#eaf1f9; color:var(--ivory)}
           "U.Phālgunī": "牛（オス）", "Uttara Phalguni": "牛（オス）", "ウッタラ・パールグニー": "牛（オス）",
           "U.Bhādrapadā": "牛（メス）", "Uttara Bhadrapada": "牛（メス）", "ウッタラ・バードラパダー": "牛（メス）",
           "Hasta": "バッファロー（メス）", "ハスタ": "バッファロー（メス）",
-          "Svātī": "バッファロー（オス）", "Svati": "バッファロー（オス）", "スヴァーティー": "バッファロー（オス）",
+          "Svātī": "バッファオス）", "Svati": "バッファロー（オス）", "スヴァーティー": "バッファロー（オス）",
           "Viśākhā": "虎（オス）", "Vishakha": "虎（オス）", "ヴィシャーハ": "虎（オス）",
           "Citrā": "虎（メス）", "Chitra": "虎（メス）", "チトラー": "虎（メス）",
           "Anurādhā": "鹿（メス）", "Anuradha": "鹿（メス）", "アヌラーダー": "鹿（メス）",
@@ -238,29 +238,25 @@ select option,select optgroup{background:#eaf1f9; color:var(--ivory)}
           "P.Bhādrapadā": "ライオン（オス）", "Purva Bhadrapada": "ライオン（オス）", "プールヴァ・バードラパダー": "ライオン（オス）"
         };
 
-        const injectYoniPerfect = () => {
-          // 画面内のすべての要素をチェック
-          const els = document.querySelectorAll("div, button, h3, span, p");
-          els.forEach(el => {
+        const injectYoniPerfectFix = () => {
+          // 1. スクショの下部アコーディオンをチェック
+          // 「開閉の役割（role="button"）」や、クリック可能なヘッダーの塊をすべて探す
+          const headers = document.querySelectorAll("[role='button'], button, summary, .nibHead, [class*='head'], [class*='Title']");
+          headers.forEach(el => {
             const text = el.innerText || "";
-            // 条件1: 先頭が「月」で始まっている
-            // 条件2: まだこの要素にヨニが書き込まれていない
-            // 条件3: 子要素にさらに「月」から始まるブロックを持たない（＝最深のタイトル行だけを特定）
+            // 先頭が「月」で始まり、まだヨニが書き込まれていないヘッダー要素だけを限定ヒット
             if (text.trim().indexOf("月") === 0 && !el.innerHTML.includes("yoni-badge")) {
-              
-              // 中身のテキスト（解説文章など）に同じ文字がダブるのを防ぐため、文字数が50文字以下の「タイトル行」に限定
-              if (text.length < 50) {
-                for (let key in yoniMap) {
-                  if (text.includes(key)) {
-                    el.innerHTML += ` <span class="yoni-badge" style="color:#f97316 !important; font-weight:bold !important; margin-left:12px; font-size:14px; display:inline-block;">[ヨニ: ${yoniMap[key]}]</span>`;
-                    break;
-                  }
+              for (let key in yoniMap) {
+                if (text.includes(key)) {
+                  // タイトルの末尾に、オレンジ色で美しくヨニを追加
+                  el.innerHTML += ` <span class="yoni-badge" style="color:#f97316 !important; font-weight:bold !important; margin-left:12px; font-size:14px; display:inline-block;">[ヨニ: ${yoniMap[key]}]</span>`;
+                  break;
                 }
               }
             }
           });
 
-          // 上部の天体一覧テーブル（表）の末尾にも表示
+          // 2. 上部の天体一覧テーブル（表）の末尾にも表示
           const cells = document.querySelectorAll("td");
           cells.forEach(cell => {
             const text = cell.innerText.trim();
@@ -276,10 +272,11 @@ select option,select optgroup{background:#eaf1f9; color:var(--ivory)}
           });
         };
 
-        // 0.1秒ごとに画面を監視して実行
-        setInterval(injectYoniPerfect, 100);
+        // 0.1秒ごとに高速監視を実行
+        setInterval(injectYoniPerfectFix, 100);
       })();
     </script>
+
 
 
 
