@@ -205,49 +205,79 @@ select option,select optgroup{background:#eaf1f9; color:var(--ivory)}
   </head>
   <body>
     <div id="root"></div>
-    <!-- 補記：ナクシャトラ名を自動検知して性別付きヨニを強制上書きする強化版プログラム -->
+    <!-- 補記：月のナクシャトラ（カタカナ・英語両対応）・アコーディオン強制上書きプログラム -->
     <script>
       (function() {
+        // カタカナ表記と英語表記の両方を網羅したヨニ辞書
         const yoniMap = {
-          "Aśvinī": "馬（オス）", "Śatabhiṣaj": "馬（メス）", "Bharaṇī": "象（オス）", "Revatī": "象（メス）",
-          "Puṣya": "羊（オス）", "Kṛttikā": "羊（メス）", "Rohiṇī": "蛇（オス）", "Mṛgaśiras": "蛇（メス）",
-          "Mūla": "犬（オス）", "Ārdrā": "犬（メス）", "Aśleṣā": "猫（オス）", "Punarvasu": "猫（メス）",
-          "Maghā": "ネズミ（オス）", "P.Phālgunī": "ネズミ（メス）", "U.Phālgunī": "牛（オス）", "U.Bhādrapadā": "牛（メス）",
-          "Svātī": "バッファロー（オス）", "Hasta": "バッファロー（メス）", "Viśākhā": "虎（オス）", "Citrā": "虎（メス）",
-          "Jyeṣṭhā": "鹿（オス）", "Anurādhā": "鹿（メス）", "P.Āṣāḍhā": "猿（オス）", "Śravaṇa": "猿（メス）",
-          "P.Bhādrapadā": "ライオン（オス）", "Dhaniṣṭhā": "ライオン（メス）", "U.Āṣāḍhā": "マングース（オス）"
+          "Jyeṣṭhā": "鹿（オス）", "Jyeshtha": "鹿（オス）", "ジェーシュター": "鹿（オス）",
+          "Revatī": "象（メス）", "Revati": "象（メス）", "レーヴァティー": "象（メス）",
+          "Aśvinī": "馬（オス）", "Ashvini": "馬（オス）", "アシュヴィニー": "馬（オス）",
+          "Śatabhiṣaj": "馬（メス）", "Satabhisha": "馬（メス）", "シャタビシャ": "馬（メス）",
+          "Bharaṇī": "象（オス）", "Bharani": "象（オス）", "バラニー": "象（オス）",
+          "Puṣya": "羊（オス）", "Pushya": "羊（オス）", "プシャ": "羊（オス）",
+          "Kṛttikā": "Krittika": "羊（メス）", "クリッティカー": "羊（メス）",
+          "Rohiṇī": "蛇（オス）", "Rohini": "蛇（オス）", "ロヒニー": "蛇（オス）",
+          "Mṛgaśiras": "蛇（メス）", "Mrigasira": "蛇（メス）", "ムリガシラス": "蛇（メス）",
+          "Mūla": "犬（オス）", "Mula": "犬（オス）", "ムーラ": "犬（オス）",
+          "Ārdrā": "犬（メス）", "Ardra": "犬（メス）", "アールドラー": "犬（メス）",
+          "Aśleṣā": "猫（オス）", "Aslesha": "猫（オス）", "アーシュレーシャー": "猫（オス）",
+          "Punarvasu": "猫（メス）", "プナルヴァス": "猫（メス）",
+          "Maghā": "ネズミ（オス）", "Magha": "ネズミ（オス）", "マガー": "ネズミ（オス）",
+          "P.Phālgunī": "ネズミ（メス）", "Purva Phalguni": "ネズミ（メス）", "プールヴァ・パールグニー": "ネズミ（メス）",
+          "U.Phālgunī": "牛（オス）", "Uttara Phalguni": "牛（オス）", "ウッタラ・パールグニー": "牛（オス）",
+          "U.Bhādrapadā": "牛（メス）", "Uttara Bhadrapada": "牛（メス）", "ウッタラ・バードラパダー": "牛（メス）",
+          "Hasta": "バッファロー（メス）", "ハスタ": "バッファロー（メス）",
+          "Svātī": "バッファロー（オス）", "Svati": "バッファロー（オス）", "スヴァーティー": "バッファロー（オス）",
+          "Viśākhā": "虎（オス）", "Vishakha": "虎（オス）", "ヴィシャーハ": "虎（オス）",
+          "Citrā": "虎（メス）", "Chitra": "虎（メス）", "チトラー": "虎（メス）",
+          "Anurādhā": "鹿（メス）", "Anuradha": "鹿（メス）", "アヌラーダー": "鹿（メス）",
+          "P.Āṣāḍhā": "猿（オス）", "Purva Ashadha": "猿（オス）", "プールヴァ・アーシャーダー": "猿（オス）",
+          "U.Āṣāḍhā": "マングース（オス）", "Uttara Ashadha": "マングース（オス）", "アメラーダー": "マングース（オス）", "ウッタラ・アーシャーダー": "マングース（オス）",
+          "Śravaṇa": "猿（メス）", "Shravana": "猿（メス）", "シュラヴァナ": "猿（メス）",
+          "Dhaniṣṭhā": "ライオン（メス）", "Dhanishta": "ライオン（メス）", "ダニシュター": "ライオン（メス）",
+          "P.Bhādrapadā": "ライオン（オス）", "Purva Bhadrapada": "ライオン（オス）", "プールヴァ・バードラパダー": "ライオン（オス）"
         };
 
-        const updateYoniDisplay = () => {
-          // 画面内のすべてのテーブルのセル(td)をチェック
+        const injectYoni = () => {
+          // 1. スクショで見せてくださった「下部アコーディオン（解説ブロック）」への上書き
+          const blocks = document.querySelectorAll("div, button, h3, span");
+          blocks.forEach(el => {
+            // 要素が「月」という文字で始まり、まだヨニが書き込まれていない場合
+            if (el.innerText && el.innerText.trim().indexOf("月") === 0 && !el.innerText.includes("ヨニ")) {
+              for (let key in yoniMap) {
+                if (el.innerText.includes(key)) {
+                  // タイトルのナクシャトラ名のすぐ横に、オレンジ色で[ヨニ属性]を強制挿入
+                  el.innerHTML = el.innerHTML.replace(key, `${key} <span style="color:#f97316; font-weight:bold; margin-left:12px; font-size:14px;">[ヨニ: ${yoniMap[key]}]</span>`);
+                  break;
+                }
+              }
+            }
+          });
+
+          // 2. 上部のテーブル（表）への上書き
           const cells = document.querySelectorAll("td");
           cells.forEach(cell => {
             const text = cell.innerText.trim();
-            // セルの中身が「Jyeṣṭhā」などのナクシャトラ名と完全一致するかチェック
             if (yoniMap[text]) {
-              const yoniText = yoniMap[text];
-              const row = cell.parentElement; // そのセルのある行(tr)を取得
-              
-              // この行の中に「月（またはMoon）」が含まれているか、かつ、すでにヨニが書き込まれていないか
+              const row = cell.parentElement;
               if ((row.innerText.includes("月") || row.innerText.toLowerCase().includes("moon")) && !row.innerText.includes("ヨニ")) {
-                // 行の一番最後のセル（状態やモーションの列）を取得
                 const targetCell = row.lastElementChild;
                 if (targetCell) {
-                  targetCell.innerHTML += ` <span style="color:#e05a00; font-weight:bold; font-size:12px;">(ヨニ: ${yoniText})</span>`;
+                  targetCell.innerHTML += ` <span style="color:#e05a00; font-weight:bold; font-size:12px;">(ヨニ: ${yoniMap[text]})</span>`;
                 }
               }
             }
           });
         };
 
-        // 画面の書き換えを監視する設定（Reactの遅延描画に対応）
-        const observer = new MutationObserver(updateYoniDisplay);
+        // Reactの描画ズレ（遅延）に完全対応するための監視設定
+        const observer = new MutationObserver(injectYoni);
         observer.observe(document.body, { childList: true, subtree: true });
-        
-        // 念のため最初の読み込み時にも実行
-        window.addEventListener('DOMContentLoaded', updateYoniDisplay);
+        window.addEventListener('DOMContentLoaded', injectYoni);
       })();
     </script>
+
 
 
   </body>
